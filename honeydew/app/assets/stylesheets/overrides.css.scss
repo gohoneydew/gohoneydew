@@ -47,7 +47,7 @@ html body {
   -o-background-size: cover;
   background-size: cover;
   background-color: #2A2935;
-
+  -webkit-overflow-scrolling: touch;
 }
 .navbar-brand {
   height: 45px;

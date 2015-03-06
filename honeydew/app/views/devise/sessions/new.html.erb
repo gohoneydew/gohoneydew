@@ -1,5 +1,13 @@
+<style>
+    .navbar{
+        display:none;
+    }
+</style>
 <div class="signinbackground">
     <div id="page-content-wrapper">
+      <%= link_to root_path do %>
+          <%= image_tag 'honeydewsimple.png', :class => "landinglogosignin animate fadeInDownBig" %>
+      <% end %>
       <div class="container-fluid">
       <div class="col-md-4 col-md-offset-4 m-t-50">
         <div class="welcome animated bounceIn text-center">
@@ -26,18 +34,6 @@
             </section>
               <section class = "new-acc">
                 <div class = "m-t-20">
-                  <div class = "social_sign_in">
-                    <h3>LOG IN WITH <strong>SOCIAL</strong></h3>
-                    <a href="/auth/facebook" title="Sign In With Facebook" rel="tooltip">
-                      <i class="fa fa-facebook text-white-opaque borderadius btn-facebook-signin"></i>
-                    </a>
-                    <a href="/auth/twitter" title="Sign In With Facebook" rel="tooltip">
-                      <i class="fa fa-twitter text-white-opaque borderadius btn-twitter-signin"></i>
-                    </a>
-                    <a href="/auth/linkedin" title="Sign In With Facebook" rel="tooltip">
-                      <i class="fa fa-linkedin text-white-opaque borderadius btn-linkedin-signin"></i>
-                    </a>
-                  </div>
                 </div>
               </section>
 

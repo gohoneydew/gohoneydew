@@ -18,7 +18,7 @@
 	margin: 0;
 	padding: 0px;
     font-family: 'Lato', sans-serif;
-} 
+}
 body { 
 	background: #fff; 
 	margin: 0; 
@@ -167,6 +167,25 @@ h4 {
 	min-height: 800px;
 	width: 100%;
 	
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+#map {
+    background: url(mapbg.jpg) no-repeat center top;
+    padding-top: 60px;
+    text-align:center;
+    background-attachment: relative;
+    background-position: center center;
+    min-height: 500px;
+    width: 100%;
+
     -webkit-background-size: 100%;
     -moz-background-size: 100%;
     -o-background-size: 100%;
@@ -448,5 +467,35 @@ input {
     max-width: 100%;
     width: 120px;
     height: 120px;
+}
 
+.footer-landing {
+    /* Set the fixed height of the footer here */
+}
+.footer-landing ul {
+    list-style-type: none;
+
+}
+.footer-landing ul li {
+    float:left;
+    padding-left:10px;
+    border-right: 1px solid #1FB18A;
+    padding-right:10px;
+}
+.footer-landing a {
+    color:#1FB18A;
+}
+
+.moreinfo p:first-child:first-letter {
+    float: left;
+    color: #1FB18A;
+    font-size: 60px;
+    line-height: 60px;
+    padding-top: 4px;
+    padding-right: 10px;
+    padding-left: 3px;
+}
+.focused {
+    color: #1FB18A;
+    font-weight: 400;
 }

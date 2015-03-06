@@ -2143,3 +2143,8 @@ label.message{
         margin-right: 0;
     }
 }
+
+.landinglogosignin{
+    max-height:60px;
+    max-width:60px;
+}

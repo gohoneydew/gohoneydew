@@ -5,9 +5,9 @@
         <button type="button" class="close text-white" data-dismiss="modal" aria-hidden="true">&times;</button>
           <div class="login-content ">
             <%= form_for(resource, as: resource_name, html:{class: ""}, validate: true , url: session_path(resource_name)) do |f|%>
-                <h1>Rio Runner Sign In</h1>
+                <h1>Honey Dew Sign In</h1>
                 <hr></hr>
-                <div class = "col-sm-5">
+                <div class = "col-sm-12">
                             <div class="form-group">
                               <div class="input-group">
                               <span class="input-group-addon">
@@ -25,7 +25,6 @@
                                 <%= f.password_field :password, class:"form-control", placeholder: "Password" %>
                               </div>
                             </div>
-                            <hr></hr>
                             <div class="row">
                               <div class="col-md-6">
                                 <% if devise_mapping.rememberable? -%>
@@ -46,19 +45,8 @@
                           Not a member yet? Click <a href="#">here</a> to register.
                         </div>
             </div>
-            <div class = "col-sm-5 col-sm-offset-2">
-              <a class=" btn-block btn-social btn-facebook" href="/auth/facebook">
-                <i class="fa fa-facebook"></i>Sign in via Facebook</a>
-              </br>
-              <a class=" btn-block btn-social btn-twitter" href="/auth/twitter">
-                <i class="fa fa-twitter"></i>Sign in via Twitter</a>
-              </br>
-              <a class=" btn-block btn-social btn-linkedin" href="/auth/linkedin">
-                <i class="fa fa-linkedin"></i>Sign in via LinkedIn</a>
-            </div>
           </div>
         </div>
-      <div class = "modal-horizontal-divider"></div>
     </div><!-- /.modal-content -->
 
   </div><!-- /.modal-dialog -->
