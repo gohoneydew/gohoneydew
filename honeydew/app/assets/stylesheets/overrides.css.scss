@@ -1,7 +1,4 @@
-img {
-  @extend .img-responsive;
-  margin: 0 auto;
-}
+
 // override for the 'Home' navigation link
 .navbar-brand {
   font-size: inherit;
@@ -16,28 +13,12 @@ img {
 // THESE ARE EXAMPLES YOU CAN MODIFY
 // create your own classes
 // to make views framework-neutral
-.column {
-  @extend .col-md-6;
-  @extend .text-center;
-}
-.form {
-  @extend .col-md-6;
-}
-.form-centered {
-  @extend .col-md-6;
-  @extend .text-center;
-}
-.submit {
-  @extend .btn;
-  @extend .btn-primary;
-  @extend .btn-lg;
-}
+
 // apply styles to HTML elements
 // to make views framework-neutral
 
 main {
   position: absolute;
-  @extend .container;
   color: #fff;
   width:100%;
   //  background-color: rgba(0,0,0,.4);
@@ -47,7 +28,6 @@ main {
   bottom:0;
 }
 section {
-  @extend .row;
   margin-top: 20px;
 }
 .header{

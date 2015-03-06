@@ -321,7 +321,7 @@ DEPENDENCIES
   pg
   pg_search
   rails (= 4.1.4)
-  rails_12factor (= 0.0.2)
+  rails_12factor
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   selenium-webdriver (= 2.35.1)
