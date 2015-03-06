@@ -105,4 +105,5 @@ Rails.application.configure do
           :authentication     => :plain,
           :user_name          => 'gohoneydewbeta@gmail.com',
           :password           => 'fucel-8L'
+      }
 end
