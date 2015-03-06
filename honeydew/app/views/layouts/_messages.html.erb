@@ -1,0 +1,15 @@
+<% flash.each do |name, msg| %>
+
+    <div class="ns-content animated fadeInDownBig">
+      <div class="ns-box ns-box-<%=name%>"><%= image_tag('rr_logo.png', :class => "img-responsive") %></div>
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+    </div>
+<% end %>
+
+
+<script>
+    setTimeout(function() {
+        $('.ns-content').fadeToggle("slow","linear");
+    }, 6000); // <-- time in milliseconds
+</script>

@@ -1,0 +1,84 @@
+<div id="page-content-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+
+              <% if @task.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+              <ul>
+                <% @task.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
+        <div class = "">
+            <%= form_for @task do |f| %>
+                <div class="row">
+                  <div class = "col-xs-12 nlform">
+                    I need someone to <%= f.text_field :subject, :placeholder =>"run an errand for me", class: ""%>. More specifically,
+                    <%= f.text_field :description, :placeholder =>"go to the store and pick up my groceries", class: "form-lg", :data => {:subline => "enter a description of your task"}%>.
+                    I need it done at this zipcode, <%= f.text_field :zipcode, class: "form-sm",:placeholder =>"87120"%>. My to-do list for a complete task is as follows:
+                    <%= f.text_field :deliverables, class: "form-xl", :placeholder =>"drive to store, pick up groceries, deliver, put away"%>.
+                    <hr />
+                  </div>
+                </div>
+                <div class = "row">
+                  <div class = "col-xs-12 nlform">
+                    Enter a Category to classify your task:
+                    <%= f.collection_select(:job_category_id,
+                                            JobCategory.all,
+                                            :id,
+                                            :name,
+                                            { :prompt => true })
+                    %>
+                  </div>
+                    <div class = "col-xs-8 nlform">
+                        Enter tags for Runners to find your task (Max of 3 tags):
+                      <%= f.text_field :tag_list, :placeholder =>"Tags", class: "tokenize", :id => "task_tags"%>
+                    </div>
+                </div>
+                <div class = "row">
+                  <div class = "col-xs-12 nlform">
+                    <hr />
+                    Leave below blank if you want task to go into bid format
+                    <hr />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class = "col-xs-12 nlform">
+                    I want a runner with a rating of at least a <%= f.text_field :rating_required, :placeholder => "4 star", class: "form-sm"%> rating and at least
+                    <%= f.text_field :no_ratings_required, :placeholder => "5", class: "form-sm"%> responses. I am willing to pay <br/>$
+                    <%= f.number_field :price, :placeholder => "0", class: "form-price"%> for this task.
+                  </div>
+                </div>
+                <div class = "row">
+                  <div class = "col-sm-4 col-sm-offset-8 text-center nlform">
+                    <div class ="nlsubmit">
+                        <%= f.submit "Submit", class: "nlsubmit" %><i class="fa fa-arrow-right fa-fw"></i>
+                    </div>
+                  </div>
+                </div>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    $('input.tokenize').tokenfield({
+        autocomplete: {
+            source: [<% ActsAsTaggableOn::Tag.all.each do |tag|
+             %>
+            "<%= tag.name%>",
+            <% end %>],
+            delay: 100
+        },
+        createTokensOnBlur: true,
+        showAutocompleteOnFocus: true,
+        limit: 3
+    });
+    $( ".js-slider" ).slider({ animate: "fast"});
+</script>

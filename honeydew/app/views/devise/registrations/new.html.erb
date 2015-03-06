@@ -1,0 +1,68 @@
+  <div class="signinbackground">
+    <div id="page-content-wrapper">
+      <div class="container-fluid">
+        <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 ">
+          <div class="welcome animated bounceIn text-center">
+            <h1>WELCOME TO<strong> HONEY DEW</strong></h1>
+            <h5>v. b1.0</h5>
+
+            <%= form_for(resource, :as => resource_name, html: {class: "form-group form-horizontal", role: "form", id: "signupForm"}, :url => registration_path(resource_name)) do |f| %>
+                <%= devise_error_messages! %>
+                <section>
+                  <div class="input-group">
+                    <%= f.text_field :first_name, autofocus: true, class: "form-control", placeholder: "First Name" %>
+                    <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                  </div>
+                  <div class="input-group ">
+                    <%= f.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
+                    <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                  </div>
+                  <div class="input-group">
+                    <%= f.email_field :email, class: "form-control", placeholder: "Email"  %>
+                    <div class="input-group-addon"><i class="fa fa-envelope-o"></i></div>
+                  </div>
+                  <div class="input-group">
+                    <%= f.password_field :password, class:"form-control", placeholder: "Password" %>
+                    <div class="input-group-addon"><i class="fa fa-key"></i></div>
+                  </div>
+                  <div class="input-group">
+                    <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password" %>
+                    <div class="input-group-addon"><i class="fa fa-key"></i></div>
+                  </div>
+
+                </section>
+                <section class="controls">
+                  <div class="checkbox">
+                    <% if devise_mapping.rememberable? -%>
+                        <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+                    <% end -%>
+                  </div>
+                </section>
+                <section class = "new-acc">
+                <div class = "m-t-20">
+                  <div class = "social_sign_in">
+                    <h3>SIGN UP WITH <strong>SOCIAL</strong></h3>
+                        <a href="/auth/facebook" title="Sign In With Facebook" rel="tooltip">
+                          <i class="fa fa-facebook text-white-opaque borderadius btn-facebook-signin"></i>
+                        </a>
+                        <a href="/auth/twitter" title="Sign In With Facebook" rel="tooltip">
+                          <i class="fa fa-twitter text-white-opaque borderadius btn-twitter-signin"></i>
+                        </a>
+                        <a href="/auth/linkedin" title="Sign In With Facebook" rel="tooltip">
+                          <i class="fa fa-linkedin text-white-opaque borderadius btn-linkedin-signin"></i>
+                        </a>
+                    </div>
+                  </div>
+                </section>
+
+        </div>
+        </div>
+                <%=button_tag "", :type => :submit, :class => "log-in btn" do%>
+                    <i class="fa fa-arrow-right fa-3x"></i>
+                <% end %>
+            <% end %>
+            <div class = "footer-signin">
+              <%= render :partial => "devise/shared/links" %>
+            </div>
+            </div>
+    </div>

@@ -1,0 +1,106 @@
+<%= form_for @task do |f| %>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+
+    <div class="wizard-steps">
+      <div class="wizard-step">
+        <div class="badge badge-primary badge-empty "></div>
+      </div>
+      <div class="wizard-step">
+        <div class="badge badge-opaque badge-empty"><span class = "wizard-title">Details&nbsp;&nbsp;&nbsp;<i class = "fa fa-caret-down"></i></span></div>
+      </div>
+      <div class="wizard-step">
+        <div class="badge badge-opaque badge-empty"><span class = "wizard-title">Job Type&nbsp;&nbsp;&nbsp;<i class = "fa fa-caret-down"></i></span></div>
+      </div>
+      <div class="wizard-step">
+        <div class="badge badge-opaque badge-empty"><span class = "wizard-title">Photos&nbsp;&nbsp;&nbsp;<i class = "fa fa-caret-down"></i></span></div>
+      </div>
+      <div class="wizard-step">
+        <div class="badge badge-opaque badge-empty"><span class = "wizard-title">Confirmation&nbsp;&nbsp;&nbsp;<i class = "fa fa-caret-down"></i></span></div>
+      </div>
+    </div>
+
+    <div class="panel panel-bg-opaque wizard-body wizard-body-1">
+      <div class="panel-body ">
+
+        <h1 class = "text-center">Step <strong>1</strong></h1>
+        <h4 class = "text-center">basic information</h4>
+
+        <hr>
+
+
+            <h4>
+              <% if @task.errors.any? %>
+                  <div id="error_explanation">
+                    <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+                    <ul>
+                      <% @task.errors.full_messages.each do |msg| %>
+                          <li><%= msg %></li>
+                      <% end %>
+                    </ul>
+                  </div>
+              <% end %>
+            </h4>
+
+            <div class="row">
+              <div class = "col-xs-8 col-xs-offset-2">
+                <%= f.text_field :subject, :placeholder =>"Subject", :autofocus => true, class: "form-control "%>
+              </div>
+            </div>
+            <div class="row m-t-50">
+              <div class = "col-xs-12 ">
+                <%= f.text_area :description, :placeholder => "Detailed Description", class: "form-control pull-right"%>
+              </div>
+            </div>
+            <div class = "row m-t-20">
+              <div class = "col-sm-3">
+                <%= f.label "Job Type" %><%= link_to help_path do %><i class = "fa fa-question-circle"></i><%end%><br />
+                <%= f.label :task_type, "Auto" %>
+                <%= f.radio_button :task_type, "auto" %>
+                <%= f.label :task_type, "Bid"%>
+                <%= f.radio_button :task_type, "bid"%>
+              </div>
+              <div class = "col-sm-3 pull-right">
+                <%= f.label "Local?" %> <%= link_to help_path do %><i class = "fa fa-question-circle"></i><% end %><br />
+                <%= f.label :local, "Local" %>
+                <%= f.radio_button :local, :true %>
+                <%= f.label :local, "Virtual" %>
+                <%= f.radio_button :local, :false%>
+              </div>
+            </div>
+            <div class = "row m-t-20">
+
+            </div>
+            <div class = "col-xs-12 control-group">
+              <%= f.collection_select(:job_category_id,
+                                      JobCategory.all,
+                                      :id,
+                                      :name,
+                                      { :prompt => true }, :class =>"form-control", :rel => "selectize")
+
+              %>
+            </div>
+
+            </div>
+            <div class="panel-footer bg-light-semi">
+              <div class="clearfix">
+                <%= button_tag "submit", class: "btn btn-primary pull-right" do %>
+                    Next <i class="fa fa-angle-right"></i>
+                <% end %>
+        <% end %>
+        <span class="pull-center wizard-info">
+Step &nbsp;
+<span class="badge badge-primary">1</span>
+&nbsp; of &nbsp;
+<span class="badge label-info">5</span>
+</span>
+        </div>
+        </div>
+        </div>
+  </div>
+</div>
+
+<script>
+    $( ".js-slider" ).slider({ animate: "fast"});
+</script>

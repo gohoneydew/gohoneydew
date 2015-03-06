@@ -1,0 +1,88 @@
+<h1>Listing messages</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sender</th>
+      <th>Recipient</th>
+      <th>Subject</th>
+      <th>Body</th>
+      <th>Task</th>
+      <th>Proposed price</th>
+      <th>Wallet price</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @messages.each do |message| %>
+      <tr>
+        <td><%= message.sender_id %></td>
+        <td><%= message.recipient_id %></td>
+        <td><%= message.subject %></td>
+        <td><%= message.body %></td>
+        <td><%= message.task_id %></td>
+        <td><%= message.proposed_price %></td>
+        <td><%= message.wallet_price %></td>
+        <td><%= link_to 'Show', message %></td>
+        <td><%= link_to 'Edit', edit_message_path(message) %></td>
+        <td><%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Message', new_message_path %>
+
+<div class = "chat-panel">
+  <div class="chat-contact unread">
+    <div class="media">
+      <a href="#oc-wrapper-chat-1" class="close" aria-hidden="true" data-toggle="offcanvas" data-control="right" data-states="open,hidden">×</a>
+      <%= image_tag(current_user.image_url, class: "media-object pull-left img-circle")%>
+      <div class="media-body">
+        <div class="media-heading">
+          Joey Weinstein
+        </div>
+        <small class="last-message">
+          Be right back, on phone
+        </small>
+      </div>
+    </div>
+  </div>
+  <p class="text-center text-info small">
+    Last Message: <span class="text-muted">at Fri Nov 13, 2009</span>
+  </p>
+  <div class = "chat-container row">
+    <p class="chat-bubble chat-bubble-left">
+      <%= image_tag(current_user.image_url, class: "img-circle chat-bubble-avatar chat-bubble-avatar-left")%>
+      Aliquam blanditiis quo molestiae
+    </p>
+    <p class="chat-bubble chat-bubble-right">
+      <%= image_tag('avatar.jpg', class: "img-circle chat-bubble-avatar chat-bubble-avatar-right")%>
+      Aut voluptatum et magnam est voluptas tenetur eum labore autem rerum tenetur temporibus
+    </p>
+    <p class="chat-bubble chat-bubble-left">
+      <%= image_tag(current_user.image_url, class: "img-circle chat-bubble-avatar chat-bubble-avatar-left")%>
+      Aliquam blanditiis quo molestiae
+    </p>
+    <p class="chat-bubble chat-bubble-right">
+      <%= image_tag('avatar.jpg', class: "img-circle chat-bubble-avatar chat-bubble-avatar-right")%>
+      Aut voluptatum et magnam est voluptas tenetur eum labore autem rerum tenetur temporibus
+    </p>
+    <p class="chat-bubble chat-bubble-left">
+      <%= image_tag(current_user.image_url, class: "img-circle chat-bubble-avatar chat-bubble-avatar-left")%>
+      Aliquam blanditiis quo molestiae
+    </p>
+    <p class="chat-bubble chat-bubble-right">
+      <%= image_tag('avatar.jpg', class: "img-circle chat-bubble-avatar chat-bubble-avatar-right")%>
+      Aut voluptatum et magnam est voluptas tenetur eum labore autem rerum tenetur temporibus
+    </p>
+  </div>
+  <div class = "row">
+    <div class = "col-xs-12">
+      <%= link_to "Reply", tasks_path, class: "btn btn-danger btn-block m-t-10" %>
+    </div>
+  </div>
+</div>

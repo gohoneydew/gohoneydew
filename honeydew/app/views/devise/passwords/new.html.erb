@@ -1,0 +1,26 @@
+
+<div class = "vertical-center">
+  <div class="block-flat col-sm-6 col-sm-offset-3">
+    <div class="header">
+      <h3 class="text-center"><%=image_tag 'rrlogo.png', class: "img-responsive img-xs" %></h3>
+    </div>
+    <div>
+      <div class="content">
+        <%= devise_error_messages! %>
+        <h5 class="title text-center"><strong>Reset Password</strong></h5>
+        <p class="text-center">Don't worry, we'll send you an email to reset your password.</p>
+        <hr>
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+            <div class="col-sm-12">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                <%= f.email_field :email, autofocus: true, class: "form-control form-opaque" %></div>
+            </div>
+            <div id="email-error"></div>
+            </div>
+            </div>
+            <p class="spacer text-center">Don't remember your email? <a href="#">Contact Support</a>.</p>
+            <%= f.submit "Send Password Instructions", class: "btn btn-block btn-primary btn-rad btn-lg" %>
+        <% end %>
+        </div>
+</div>

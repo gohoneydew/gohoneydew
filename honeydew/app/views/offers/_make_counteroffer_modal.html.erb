@@ -1,0 +1,63 @@
+<%= form_for(@offer, html: {class:"form-horizontal", role: "form"}) do |f|%>
+<div class="modal modal-dark-lt fade" id="makecounteroffer" role="dialog" aria-labelledby="makecounteroffer" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="makecounteroffer">Rio Runner</h4>
+      </div>
+      <div class="modal-body ">
+        <div class = "row text-white-opaque">
+          <div class = "col-sm-10">
+            <h2 class = "text-center">Send Message</h2>
+
+
+
+                <div class = "form-group">
+                  <div class = "col-sm-10">
+                    <%= f.hidden_field(:recipient_id, :value => @task.wallet_id)%>
+                  </div>
+                </div>
+                <div class = "form-group">
+                  <div class = "col-sm-10">
+                    <%= f.hidden_field(:task_id, :value => @task.id)%>
+                  </div>
+                </div>
+
+                    <div class = "form-group">
+                      <%= f.label :proposed_price, class: "col-sm-2 control-label"  do %>
+                          <i class="fa fa-dollar fa-fw"></i>
+                      <% end %>
+                      <div class = "col-sm-10">
+                        <%= f.text_field :proposed_price, :value => @offer.wallet_price, class: "form-control col-sm-offset-1", placeholder: "Price I'll do this task for" %>
+                      </div>
+                    </div>
+                    <div class = "row">
+                      <div class = "form-group">
+                        <%= f.label :body, class: "col-sm-2 control-label"  do %>
+                            <i class="fa fa-envelope fa-fw"><br><br>Message (optional)</i>
+                        <% end %>
+                        <div class = "col-sm-10">
+                          <%= f.text_area :body, class: "form-control col-sm-offset-1", placeholder: "I am able to complete this task this weekend..." %>
+                        </div>
+                      </div>
+                    </div>
+
+                <div class = "row">
+                  <div class = "col-xs-9 col-xs-offset-3">
+                    <p>These are rio runner terms and conditions. You must agree here, blah blah blah. Have a checkbox below to check.</p>
+                  </div>
+                </div>
+                </div>
+                </div>
+            </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <%= f.submit "Submit Bid", class:"btn btn-danger pull-right"%>
+            <% end %>
+            </div>
+    </div>
+  </div>
+</div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

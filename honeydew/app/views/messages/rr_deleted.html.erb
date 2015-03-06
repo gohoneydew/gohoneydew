@@ -1,0 +1,105 @@
+<div id="page-content-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3">
+        <section class="panel bg-opaque">
+          <header class="panel-heading bg-dark-opaque">
+            <h4 class="gen-case">My Messages</h4>
+          </header>
+          <div class="panel-body">
+            <ul class="nav nav-pills nav-stacked mail-nav">
+              <li class="inactive"><%= link_to inbox_path(current_user.id) do %>
+                    <% if @unread_messages.exists? %>
+                        <span class="badge small pull-right"><%= @unread_messages.count %></span>
+                    <% end %>
+                    <i class="fa fa-inbox fa-fw">&nbsp;</i>&nbsp;Inbox
+                <% end %></li>
+              <li class = "inactive"><%= link_to sent_path(current_user.id) do %>
+                    <i class="fa fa-envelope fa-fw">&nbsp;</i>&nbsp;Sent Messages
+                <% end %></li>
+              <li class = "active"><%= link_to deleted_path(current_user.id) do %>
+                    <i class="fa fa-trash-o fa-fw">&nbsp;</i>&nbsp;Deleted
+                <% end %></li>
+              <div class="tx-div small"></div>
+              <li class = "inactive"><%= link_to myoffers_path(current_user.id) do %>
+                    <% if @unread_offers.exists? %>
+                        <span class="badge small pull-right"><%= @unread_offers.count %></span>
+                    <% end %>
+                    <i class="fa fa-bullhorn fa-fw">&nbsp;</i>&nbsp;Offers
+                <% end %></li>
+              <li class = "inactive"><%= link_to mychats_path(current_user.id) do %>
+                    <i class="fa fa-comment-o fa-fw">&nbsp;</i>&nbsp;Task Chat
+                <% end %></li>
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      <div class="col-sm-9">
+        <section class="panel bg-opaque">
+          <header class="panel-heading bg-dark-opaque">
+            <h4 class="gen-case">Deleted Messages (<%= @messages.count %>)
+            </h4>
+          </header>
+
+          <div class="panel-body minimal">
+            <div class="mail-option">
+              <div class = "row">
+                <div class = "col-sm-6 pull-left">
+                  <%= page_entries_info @tasks %>
+                </div>
+                <div class = "col-sm-6 pull-right">
+                  <%= will_paginate @messages, :class => 'rr_pagination pull-right' %>
+                </div>
+              </div>
+              <div class = "row">
+              </div>
+            </div>
+
+            <div class="table-inbox-wrap ">
+              <table class="table table-inbox table-hover table-responsive">
+                <tbody class = "text-center">
+                <thead>
+                <tr>
+                  <th>From</th>
+                  <th>Subject</th>
+                  <th>Message Type</th>
+                  <th class = "text-right">Date</th>
+                </tr>
+
+                </thead>
+
+                <% @messages.each do |message| %>
+                    <tr data-link = "<%=message_path(message.id)%>" class ="row_hover">
+
+                      <td><%= User.find(message.sender_id).first_name %> </td>
+                      <% if Task.find_by_id(message.task_id) %>
+                          <td><%= Task.find_by_id(message.task_id).subject %></td>
+                      <% else %>
+                          <td>Task Cannot Be Found (Needs to Be Fixed Later)</td>
+                      <% end %>
+
+                      <td><%= message.message_type %></td>
+
+                      <td class="text-right"><% if message.created_at.to_date > 7.days.ago %>
+                            <%= time_ago_in_words(message.created_at) %> ago
+                        <% else %> <%= message.created_at.strftime("%B %d") %><%end %></td>
+                    </tr>
+                <% end %>
+                </tbody>
+              </table>
+
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <script>
+        $("tr[data-link]").click(function() {
+            window.location = $(this).data("link")
+        });
+    </script>

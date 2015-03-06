@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subject: MyString
+  task_id: 
+  user_id: 
+  proposed_price: 9.99
+  body: MyString
+  status: MyString
+  unnread: 
+  deleted: 
+
+two:
+  subject: MyString
+  task_id: 
+  user_id: 
+  proposed_price: 9.99
+  body: MyString
+  status: MyString
+  unnread: 
+  deleted: 

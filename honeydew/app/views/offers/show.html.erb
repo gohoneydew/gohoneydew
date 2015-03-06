@@ -1,0 +1,114 @@
+<div id="page-content-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3">
+        <section class="panel bg-opaque">
+          <header class="panel-heading bg-dark-opaque">
+            <h4 class="gen-case">
+            <%= link_to myoffers_path(current_user.id) do %>
+                <i class="fa fa-chevron-left text-white"> Offers</i>
+            <% end %>
+              <% if @unread_offers.present? %>
+              <span class="badge small pull-right text-white"><%= @unread_offers.count %></span>
+                  <% end %>
+            </h4>
+          </header>
+
+          <div class="panel-body">
+            <ul class="nav nav-pills nav-stacked mail-nav">
+              <% # TODO: have a helper that defines if this current offer is active / inactive %>
+              <% @offers.each do |offer| %>
+              <li class = "inactive"><%= link_to offer_path(offer) do %>
+                    $<%=offer.proposed_price %> | "<%=Task.find_by_id(offer.task_id).subject%>"
+                <% end %></li>
+             <% end %>
+            </ul>
+          </div>
+        </section>
+      </div>
+      <div class="col-sm-9">
+        <section class="panel bg-opaque">
+          <header class="panel-heading bg-dark-opaque">
+            <h4 class="gen-case"> View Offer
+            </h4>
+          </header>
+          <div class="panel-body bg-opaque">
+            <div class = "row">
+              <div class="col-md-4 pull-right">
+                <p class="date"><%= @offer.created_at.strftime("%A, %B %d, %Y at %I:%M %p")%></p>
+              </div>
+              <div class="mail-sender">
+                <div class="col-md-8">
+                  <% if @offer.sender_id == current_user %>
+                      <h4>
+                        <strong>me</strong>
+                        to
+
+                        <%= link_to user_path(@sender.id) do %>
+                            <% if @sender.image_url.present? %>
+                                <%= image_tag(@sender.image_url, :class => " img-circle img-icon") %>
+                            <% else %>
+                                <%= image_tag('avatar.jpg', :class => " img-circle img-icon") %>
+                            <% end %>
+                            <strong>&nbsp;<%= @sender.first_name%>&nbsp;<%= @sender.last_initial %></strong>
+                        <% end %>
+                      </h4>
+                  <% else %>
+
+                      <h4>
+                        <% if @sender.id == 0 %>
+                            <%= image_tag(@sender.image_url, :class => "pull-left img-circle img-icon") %>
+                            <strong>&nbsp;<%= @sender.first_name%></strong>
+
+                        <% else %>
+                            <%= link_to user_path(@sender.id) do %>
+                                <% if @sender.image_url.present? %>
+                                    <%= image_tag(@sender.image_url, :class => "pull-left img-circle img-icon") %>
+                                <% else %>
+                                    <%= image_tag('avatar.jpg', :class => "pull-left img-circle img-icon") %>
+                                <% end %>
+                                <strong>&nbsp;<%= @sender.private_name%></strong>
+
+                            <% end %>
+                            <div class = "small">(Rating: <i class = "fa fa-star"></i><i class = "fa fa-star"></i><i class = "fa fa-star"></i></i><i class = "fa fa-star-o"></i><i class = "fa fa-star-o"></i>, jobs completed: 8)</div>
+                        <% end %>
+                        to
+                        <strong>me</strong>
+                      </h4>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+
+            <div class="mail-header row">
+              <div class="col-md-12">
+                <h1 class = "price pull-left">$<%=number_with_precision(@offer.wallet_price, :precision => 2) %></h1>
+                <h4 class="text-capitalize text-center blockquote-reverse"> <b>This is the offer subject?</b></h4>
+              </div>
+            </div>
+            <hr></hr>
+            <div class=" row">
+              <div class = "col-md-12">
+                Task: <%= link_to @task.subject, task_path(@task), class: "" %> <br>
+                <div class = "view-mail">
+                  <p><%= @offer.body.html_safe %></p>
+                  <p><%=@sender.first_name %> would like to offer $<%=number_with_precision(@offer.wallet_price, :precision => 2) %> to complete this job. Compare his reputation to others in your
+                    <area class="" shape="" coords="" href="" alt=""/></p>
+                </div>
+                <div class="compose-btn col-md-12 pull-right">
+                      <a href = "#" class = "pull-right btn btn-success" data-toggle ="modal" data-target = "#accept">Accept $<%=number_with_precision(@offer.wallet_price, :precision => 2) %></a> &nbsp;
+                      <a href = "#" class = "pull-right btn btn-warning" data-toggle ="modal" data-target = "#counteroffer">Make Counteroffer</a>
+                      <a href = "#" class = "pull-right btn btn-danger" data-toggle ="modal" data-target = "#decline">Decline Offer</a>
+              </div>
+            </div>
+            </div>
+
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render 'accept_modal' %>
+<%= render 'decline_modal' %>

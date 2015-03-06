@@ -1,0 +1,146 @@
+<div id="page-content-wrapper">
+  <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-3">
+            <section class="panel bg-opaque">
+              <header class="panel-heading bg-dark-opaque">
+                <h4 class="gen-case">My Messages</h4>
+              </header>
+              <div class="panel-body">
+                <ul class="nav nav-pills nav-stacked mail-nav">
+                  <li class = "inactive"><%= link_to inbox_path(current_user.id) do %>
+                        <% if @unread_messages.exists? %>
+                            <span class="badge small pull-right"><%= @unread_messages.count %></span>
+                        <% end %>
+                        <i class="fa fa-inbox fa-fw">&nbsp;</i>&nbsp;Inbox
+                    <% end %></li>
+                  <li class = "inactive"><%= link_to sent_path(current_user.id) do %>
+                        <i class="fa fa-envelope fa-fw">&nbsp;</i>&nbsp;Sent Messages
+                    <% end %></li>
+                  <li class = "inactive"><%= link_to deleted_path(current_user.id) do %>
+                        <i class="fa fa-trash-o fa-fw">&nbsp;</i>&nbsp;Deleted
+                    <% end %></li>
+                  <div class="tx-div small"></div>
+                  <li class = "inactive"><%= link_to myoffers_path(current_user.id) do %>
+                        <% if @unread_offers.exists? %>
+                            <span class="badge small pull-right"><%= @unread_offers.count %></span>
+                        <% end %>
+                        <i class="fa fa-bullhorn fa-fw">&nbsp;</i>&nbsp;Offers
+
+                    <% end %></li>
+                  <li class = "inactive"><%= link_to mychats_path(current_user.id) do %>
+                        <i class="fa fa-comment-o fa-fw">&nbsp;</i>&nbsp;Task Chat
+                    <% end %></li>
+                </ul>
+              </div>
+            </section>
+          </div>
+          <div class="col-sm-9">
+            <section class="panel bg-opaque">
+              <header class="panel-heading bg-dark-opaque">
+                <h4 class="gen-case"> View Message
+                </h4>
+              </header>
+              <div class="panel-body bg-opaque">
+                <div class = "row">
+                <div class="col-md-4 pull-right">
+                  <p class="date"><%= @message.created_at.strftime("%A, %B %d, %Y at %I:%M %p")%></p>
+                </div>
+                <div class="mail-sender">
+                    <div class="col-md-8">
+                      <% if @sender == current_user %>
+                          <h4>
+                            <strong>me</strong>
+                            to
+
+                            <%= link_to user_path(@user.id) do %>
+                                <% if @recipient.image_url.present? %>
+                                    <%= image_tag(@recipient.image_url, :class => " img-circle img-icon") %>
+                                <% else %>
+                                    <%= image_tag('avatar.jpg', :class => " img-circle img-icon") %>
+                                <% end %>
+                                <strong>&nbsp;<%= @recipient.first_name%>&nbsp;<%= @recipient.last_initial %></strong>
+                            <% end %>
+                          </h4>
+                      <% else %>
+
+                      <h4>
+                        <% if @user.id == 0 %>
+                                    <%= image_tag(@sender.image_url, :class => "pull-left img-circle img-icon") %>
+                                <strong>&nbsp;<%= @user.first_name%></strong>
+
+                        <% else %>
+                        <%= link_to user_path(@user.id) do %>
+                            <% if @sender.image_url.present? %>
+                                <%= image_tag(@sender.image_url, :class => "pull-left img-circle img-icon") %>
+                            <% else %>
+                                <%= image_tag('avatar.jpg', :class => "pull-left img-circle img-icon") %>
+                            <% end %>
+                            <strong>&nbsp;<%= @user.first_name%>&nbsp;<%= @user.last_initial %></strong>
+
+                        <% end %>
+                        <% end %>
+                        to
+                        <strong>me</strong>
+                      </h4>
+                      <% end %>
+                    </div>
+                </div>
+                </div>
+
+                <div class="mail-header row">
+                  <div class="col-md-12">
+                    <h4 class="text-capitalize text-center blockquote-reverse"> <b><%= @message.subject %></b></h4>
+                  </div>
+                </div>
+                <hr></hr>
+                <div class=" row">
+                  <div class = "col-md-12">
+                    Task: <%= link_to @task.subject, task_path(@task), class: "" %>
+                    <div class = "view-mail">
+                  <p><%= @message.body.html_safe %></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="compose-btn col-md-12 pull-right">
+                  <% if @message.message_type == "inquiry" && @task.status == "open" %>
+                      <a href = "#" class = "pull-right btn btn-success" data-toggle ="modal" data-target = "#accept">Accept Offer</a>
+                      <a href = "#" class = "pull-right btn btn-warning" data-toggle ="modal" data-target = "#counteroffer">Make Counteroffer</a>
+                      <a href = "#" class = "pull-right btn btn-danger" data-toggle ="modal" data-target = "#decline">Decline Offer</a>
+                  <% elsif @message.message_type == "counteroffer" && @task.status == "open"%>
+                      <a href = "#" class = "pull-right btn btn-success" data-toggle ="modal" data-target = "#acceptcounteroffer">Accept Counteroffer</a>
+                      <a href = "#" class = "pull-right btn btn-warning" data-toggle ="modal" data-target = "#counteroffer">Make Counteroffer</a>
+                      <% else %>
+                      <a href = "#" class = " btn btn-primary" data-toggle ="modal" data-target = "#newmessage"><i class="fa fa-reply"></i> Reply</a>
+                  <% end %>
+
+                  <% if @message.unread == false %>
+                      <%= link_to markasunread_path(@message), class: "btn btn-info" do %>
+                          <i class = "fa fa-eye">  mark as unread</i>
+                      <% end %>
+                  <% end %>
+                  <% if @message.deleted == true %>
+                      <%= link_to markasundeleted_path(@message), class: "btn btn-danger" do %>
+                          <i class = "fa fa-slack">  undelete</i>
+                      <% end %>
+                  <% else %>
+                      <%= link_to markasdeleted_path(@message), class: "btn btn-danger" do %>
+                          <i class = "fa fa-trash-o"></i>
+                      <% end %>
+                  <% end %>
+
+
+
+                </div>
+
+              </div>
+            </section>
+          </div>
+        </div>
+  </div>
+</div>
+<%= render 'accept_modal' %>
+<%= render 'decline_modal' %>
+<%= render 'counteroffer_modal' %>
+<%= render 'new_message_modal' %>
+<%= render 'accept_counteroffer_modal' %>

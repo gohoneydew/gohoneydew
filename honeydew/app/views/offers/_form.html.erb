@@ -1,0 +1,19 @@
+<%= simple_form_for(@offer) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :subject %>
+    <%= f.association :task %>
+    <%= f.association :user %>
+    <%= f.input :proposed_price %>
+    <%= f.input :body %>
+    <%= f.input :status %>
+    <%= f.input :unread
+    %>
+    <%= f.input :deleted %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

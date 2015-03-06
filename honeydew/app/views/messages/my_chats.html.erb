@@ -1,0 +1,37 @@
+<div id="page-content-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3">
+        <section class="panel bg-opaque">
+          <header class="panel-heading bg-dark-opaque">
+            <h4 class = "gen-case">
+            <%= link_to 'javascript:history.go(-1);' do %>
+                <i class="fa fa-chevron-left text-white"></i>
+            <% end %>
+            </h4>
+          </header>
+          <div class="panel-body">
+            <ul class="nav nav-pills nav-stacked mail-nav">
+              <% @tasks.each do |task| %>
+                  <li class="inactive"><%= link_to taskchat_path(task.id) do %>
+                        <% if task.messages.unread.present? %>
+                            <span class="badge small pull-right"><%= task.messages.unread.count %></span>
+                        <% end %>
+
+                        <%=h truncate(task.subject, :length => 60) %>
+                    <% end %></li>
+              <% end %>
+            </ul>
+          </div>
+        </section>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+    $("tr[data-link]").click(function() {
+        window.location = $(this).data("link")
+    });
+</script>

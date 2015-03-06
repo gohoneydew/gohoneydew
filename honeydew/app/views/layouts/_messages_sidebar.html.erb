@@ -1,0 +1,227 @@
+<div id="messages-sidebar">
+<ul class="nav nav-tabs-oc nav-justified-all animated fadeIn ">
+  <li class="active">
+    <a href="#sidebar-notifications" class="btn-nav" data-toggle="tab"
+       rel="tooltip" data-placement="bottom" title="Notifications">
+      <i class="fa fa-bell-o fa-lg"><% if current_user.messages.where(:unread => true).present? %><span class="badge badge-corner"><%=current_user.messages.where(:unread => true).count %></span><% end%></i>
+    </a>
+  </li>
+  <li>
+    <a href="#sidebar-messages" class="btn-nav" data-toggle="tab"
+       rel="tooltip" data-placement="bottom" title="Messages">
+      <i class="fa fa-comments-o fa-lg"><span class="badge badge-corner">4</span></i>
+    </a>
+  </li>
+  <li>
+    <a href="#sidebar-me" class="btn-nav" data-toggle="tab"
+       rel="tooltip" data-placement="bottom" title="Me">
+      <i class="fa fa-bell-o fa-lg"></i>
+    </a>
+  </li>
+  <li>
+    <a href="#sidebar-settings" class="btn-nav" data-toggle="tab"
+       rel="tooltip" data-placement="bottom" title="Settings">
+      <i class="fa fa-cog fa-lg"></i>
+    </a>
+  </li>
+</ul>
+<div class = "tab-content">
+  <div class="tab-pane high active fade in" id="sidebar-notifications">
+    <% if current_user.messages.where(:unread => true).present? %>
+        <% current_user.messages.where(:unread => true).each do |message| %>
+            <%= link_to message_path(message), class: "", remote: true, data: {:toggle => "modal", :target => "#user_messaging"} do %>
+                <div class = "row notification animated bounceInDown">
+                  <div class = "notification-header col-xs-2 pull-left"><%= image_tag(current_user.image_url) %></div><div class = "notification-body col-xs-10 pull-right"><%= message.subject %></div>
+                </div>
+            <% end %>
+            <%= link_to 'View Details', message, remote: true %>
+        <% end %>
+    <% else %>
+        <h3>You have no new notifications...</h3>
+    <% end %>
+  </div>
+  <div class="tab-pane high chat-pane animated bounceInDown" id="sidebar-messages">
+    <div class = "chat-panel">
+      <div class="chat-contact unread">
+        <div class="media">
+          <a href="#oc-wrapper-chat-1" class="close" aria-hidden="true" data-toggle="offcanvas" data-control="right" data-states="open,hidden">×</a>
+          <%= image_tag(current_user.image_url, class: "media-object pull-left img-circle")%>
+          <div class="media-body">
+            <div class="media-heading">
+              Joey Weinstein
+            </div>
+            <small class="last-message">
+              Be right back, on phone
+            </small>
+          </div>
+        </div>
+      </div>
+      <p class="text-center text-info m-t-10 small">
+        Last Message: <span class="text-muted">at Fri Nov 13, 2009</span>
+      </p>
+      <div class = "chat-container row">
+        <p class="chat-bubble chat-bubble-left">
+          <%= image_tag(current_user.image_url, class: "img-circle chat-bubble-avatar chat-bubble-avatar-left")%>
+          Aliquam blanditiis quo molestiae
+        </p>
+        <p class="chat-bubble chat-bubble-right">
+          <%= image_tag('avatar.jpg', class: "img-circle chat-bubble-avatar chat-bubble-avatar-right")%>
+          Aut voluptatum et magnam est voluptas tenetur eum labore autem rerum tenetur temporibus
+        </p>
+        <p class="chat-bubble chat-bubble-left">
+          <%= image_tag(current_user.image_url, class: "img-circle chat-bubble-avatar chat-bubble-avatar-left")%>
+          Aliquam blanditiis quo molestiae
+        </p>
+        <p class="chat-bubble chat-bubble-right">
+          <%= image_tag('avatar.jpg', class: "img-circle chat-bubble-avatar chat-bubble-avatar-right")%>
+          Aut voluptatum et magnam est voluptas tenetur eum labore autem rerum tenetur temporibus
+        </p>
+        <p class="chat-bubble chat-bubble-left">
+          <%= image_tag(current_user.image_url, class: "img-circle chat-bubble-avatar chat-bubble-avatar-left")%>
+          Aliquam blanditiis quo molestiae
+        </p>
+        <p class="chat-bubble chat-bubble-right">
+          <%= image_tag('avatar.jpg', class: "img-circle chat-bubble-avatar chat-bubble-avatar-right")%>
+          Aut voluptatum et magnam est voluptas tenetur eum labore autem rerum tenetur temporibus
+        </p>
+      </div>
+      <div class = "row">
+        <div class = "col-xs-12">
+          <%= link_to "Reply", tasks_path, class: "btn btn-danger btn-block m-t-10" %>
+        </div>
+      </div>
+    </div>
+    <div class = "chat-panel">
+      <div class="chat-contact unread">
+        <div class="media">
+          <a href="#oc-wrapper-chat-1" class="close" aria-hidden="true" data-toggle="offcanvas" data-control="right" data-states="open,hidden">×</a>
+          <%= image_tag(current_user.image_url, class: "media-object pull-left img-circle")%>
+          <div class="media-body">
+            <div class="media-heading">
+              Joey Weinstein
+            </div>
+            <small class="last-message">
+              Be right back, on phone
+            </small>
+          </div>
+        </div>
+      </div>
+      <p class="text-center text-info m-t-10 small">
+        Last Message: <span class="text-muted">at Fri Nov 13, 2009</span>
+      </p>
+      <div class = "chat-container row">
+        <p class="chat-bubble chat-bubble-left">
+          <%= image_tag(current_user.image_url, class: "img-circle chat-bubble-avatar chat-bubble-avatar-left")%>
+          Aliquam blanditiis quo molestiae
+        </p>
+        <p class="chat-bubble chat-bubble-right">
+          <%= image_tag('avatar.jpg', class: "img-circle chat-bubble-avatar chat-bubble-avatar-right")%>
+          Aut voluptatum et magnam est voluptas tenetur eum labore autem rerum tenetur temporibus
+        </p>
+      </div>
+      <div class = "row">
+        <div class = "col-xs-12">
+          <%= link_to "Reply", tasks_path, class: "btn btn-danger btn-block m-t-10" %>
+        </div>
+      </div>
+    </div>
+    <div class = "chat-panel">
+      <div class="chat-contact unread">
+        <div class="media">
+          <a href="#oc-wrapper-chat-1" class="close" aria-hidden="true" data-toggle="offcanvas" data-control="right" data-states="open,hidden">×</a>
+          <%= image_tag(current_user.image_url, class: "media-object pull-left img-circle")%>
+          <div class="media-body">
+            <div class="media-heading">
+              Joey Weinstein
+            </div>
+            <small class="last-message">
+              Be right back, on phone
+            </small>
+          </div>
+        </div>
+      </div>
+      <p class="text-center text-info m-t-10 small">
+        Last Message: <span class="text-muted">at Fri Nov 13, 2009</span>
+      </p>
+      <div class = "chat-container row">
+        <p class="chat-bubble chat-bubble-left">
+          <%= image_tag(current_user.image_url, class: "img-circle chat-bubble-avatar chat-bubble-avatar-left")%>
+          Aliquam blanditiis quo molestiae
+        </p>
+        <p class="chat-bubble chat-bubble-right">
+          <%= image_tag('avatar.jpg', class: "img-circle chat-bubble-avatar chat-bubble-avatar-right")%>
+          Aut voluptatum et magnam est voluptas tenetur eum labore autem rerum tenetur temporibus
+        </p>
+      </div>
+      <div class = "row">
+        <div class = "col-xs-12">
+          <%= link_to "Reply", tasks_path, class: "btn btn-danger btn-block m-t-10" %>
+        </div>
+      </div>
+    </div>
+    <div class = "chat-panel">
+      <div class="chat-contact unread">
+        <div class="media">
+          <a href="#oc-wrapper-chat-1" class="close" aria-hidden="true" data-toggle="offcanvas" data-control="right" data-states="open,hidden">×</a>
+          <%= image_tag(current_user.image_url, class: "media-object pull-left img-circle")%>
+          <div class="media-body">
+            <div class="media-heading">
+              Joey Weinstein
+            </div>
+            <small class="last-message">
+              Be right back, on phone
+            </small>
+          </div>
+        </div>
+      </div>
+      <p class="text-center text-info m-t-10 small">
+        Last Message: <span class="text-muted">at Fri Nov 13, 2009</span>
+      </p>
+      <div class = "chat-container row">
+        <p class="chat-bubble chat-bubble-left">
+          <%= image_tag(current_user.image_url, class: "img-circle chat-bubble-avatar chat-bubble-avatar-left")%>
+          Aliquam blanditiis quo molestiae
+        </p>
+        <p class="chat-bubble chat-bubble-right">
+          <%= image_tag('avatar.jpg', class: "img-circle chat-bubble-avatar chat-bubble-avatar-right")%>
+          Aut voluptatum et magnam est voluptas tenetur eum labore autem rerum tenetur temporibus
+        </p>
+      </div>
+      <div class = "row">
+        <div class = "col-xs-12">
+          <%= link_to "Reply", tasks_path, class: "btn btn-danger btn-block m-t-10" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tab-pane high fade in" id="sidebar-me">
+    <div class="panel-group col-xs-12" id="accordion">
+      <% if current_user.messages.where(:unread => true).present? %>
+          <% current_user.messages.where(:unread => true).each_with_index do |message, index| %>
+              <div class="panel panel-default animated bounceInUp">
+                <div class="panel-heading panel-heading-notification ">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%=index %>" class= "btn-block panel-toggle">
+                    <i class = "caret pull-right"></i>
+                    <h4 class="panel-title ">
+                      <%= message.subject %> &nbsp;
+                    </h4>
+                  </a>
+                </div>
+                <div id="collapse<%=index %>" class="panel-collapse collapse">
+                  <div class="panel-body">
+                    <%= message.body %>
+                  </div>
+                </div>
+              </div>
+          <% end %>
+      <% else %>
+          <h3>You have no new notifications</h3>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="tab-pane high fade in" id="sidebar-settings">
+    This is the settings Pane
+  </div>
+</div>
+</div>

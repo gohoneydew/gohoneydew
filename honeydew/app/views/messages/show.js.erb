@@ -1,0 +1,6 @@
+$modal = $('.modal'),
+$modalBody = $('.modal .modal-body'),
+$modalHeading = $('.modal .modal-heading');
+$modalHeading.html("<%= @message.title %>");
+$modalBody.html("<%= escape_javascript(render @message) %>");
+$modal.modal();

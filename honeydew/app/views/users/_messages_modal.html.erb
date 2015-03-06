@@ -1,0 +1,27 @@
+<div class="modal modal-primary-lter animated side-fall" id="user_messaging" role="dialog" aria-labelledby="user_messaging" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="messaging">Rio Runner</h4>
+      </div>
+      <div class="modal-body">
+        <div class = "text-center col-sm-12">
+          <h4 class = "blockquote-reverse">Subject</h4>
+          <%=@user.messages.count %>
+        </div>
+        <div class = "row">
+          <div class = "col-sm-10">
+
+          </div>
+        </div>
+      </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <%= button_tag "Send Message", class:"btn btn-danger pull-right"%>
+        </div>
+
+  </div>
+</div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

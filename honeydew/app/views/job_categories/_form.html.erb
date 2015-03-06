@@ -1,0 +1,97 @@
+<%= simple_form_for(@job_category) do |f| %>
+  <%= f.error_notification %>
+    <div class="panel-heading panel-handle panel-colorize">
+      <div class="panel-actions pull-right panel-actions-reveal">
+            <span class="panel-actions-reveal-hide animated fadeInRight">
+
+  <span class="panel-action panel-classify">
+    <select rel="classselector">
+      <option>panel-none</option>
+      <option>panel-default</option>
+      <option>panel-light</option>
+      <option>panel-dark</option>
+      <option>panel-inverse</option>
+      <option>panel-warning</option>
+      <option>panel-danger</option>
+      <option>panel-primary</option>
+      <option>panel-info</option>
+      <option>panel-success</option>
+    </select>
+  </span>
+<span class="panel-action panel-fullscreen">
+  <i class="fa fa-expand"></i>
+</span>
+<span class="panel-action panel-collapse">
+  <i class="fa fa-minus"></i>
+</span>
+<span class="panel-action panel-close">
+  <i class="fa fa-times"></i>
+</span>
+            </span>
+        &nbsp;&nbsp;
+        <i class="fa fa-bars panel-actions-reveal-icon"></i>
+      </div>
+      <div class="panel-title">
+      <span class="panel-title-edtitable" data-type="text">
+        Basic form
+      </span>
+      </div>
+    </div>
+
+
+<div class="panel-body-collapse collapse in">
+  <div class="panel-body">
+    <div class="form-group">
+    <%= f.input :name, class: "form-control" %>
+    <%= f.input :tasks %>
+    <%= f.input :user_generated %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+</div>
+
+
+
+    <form role="form">
+
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      </div>
+      <div class="fileinput fileinput-new" data-provides="fileinput" id="exampleInputFile1">
+        <label for="exampleInputFile1">Choose file</label>
+        <div class="input-group">
+          <div class="form-control" data-trigger="fileinput">
+            <i class="fa fa-file fileinput-exists"></i>
+            <span class="fileinput-filename"></span>
+          </div>
+                <span class="input-group-addon btn btn-file">
+                  <span class="fileinput-new">Select file</span>
+                  <span class="fileinput-exists">Change</span>
+                  <input type="file" name="...">
+                </span>
+          <a href="#" class="input-group-addon btn btn-default fileinput-exists"
+             data-dismiss="fileinput">Remove</a>
+        </div>
+        <p class="help-block">Example block-level help text here.</p>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox"> Check me out
+        </label>
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+
+
+
+  </div>
+</div>
+</div>

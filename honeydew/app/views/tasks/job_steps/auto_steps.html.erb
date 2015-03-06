@@ -1,0 +1,115 @@
+<div id="page-content-wrapper">
+  <div class="container-fluid ">
+
+    <div class="row">
+      <div class="col-md-9">
+
+        <div class="wizard-steps">
+          <div class="wizard-step">
+            <div class="badge badge-success badge-empty "><i class = "fa fa-check fa-2x "></i></div>
+          </div>
+          <div class="wizard-step">
+            <div class="badge badge-success badge-empty"><i class = "fa fa-check fa-2x "></i></div>
+          </div>
+          <div class="wizard-step">
+            <div class="badge badge-primary badge-empty"></div>
+          </div>
+          <div class="wizard-step">
+            <div class="badge badge-opaque badge-empty"></div>
+          </div>
+          <div class="wizard-step">
+            <div class="badge badge-opaque badge-empty"></div>
+          </div>
+        </div>
+
+        <div class="panel panel-bg-opaque wizard-body wizard-body-3">
+          <div class="panel-body ">
+
+            <h1 class = "text-center">Step <strong>3</strong></h1>
+            <h4 class = "text-center">this is the most important step</h4>
+            <hr>
+            <% if @task.task_type == 'auto'%>
+            <%= form_for(@task, url: wizard_path, :method => :put) do |f| %>
+                <div class="row">
+                  <% if @task.errors.any? %>
+                      <div id="error_explanation">
+                        <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+                        <ul>
+                          <% @task.errors.full_messages.each do |msg| %>
+                              <li><%= msg %></li>
+                          <% end %>
+                        </ul>
+                      </div>
+                  <% end %>
+                  <div class = "col-xs-12 text-center">
+                    Task Type : <%= @task.task_type %>
+                  </div>
+                </div>
+
+                <div class = "auto">
+                    <div class="row m-t-50">
+                      <div class = "col-xs-6">
+                        <%= f.label :rating_required, class: "control-label" %> &nbsp;&nbsp;&nbsp;
+                        <%= f.number_field :rating_required, class: "rating col-sm-offset-2", placeholder:"Score", :id => "input-1", :data => {:min => "0", :max => "5", :step => "1"} %>
+                      </div>
+
+                      <div class = "col-xs-6">
+                        <%= f.label "Number of Total Ratings", class: "control-label" %>
+                        <%= f.text_field :no_ratings_required, :placeholder => "Required Runner Rating", class: "form-control pull-right"%>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class = "col-xs-6 col-xs-offset-3">
+                        <%= f.label :price, class: "control-label" %>
+                        <div class="input-group">
+                          <span class="input-group-addon input-group-addon-opaque">$</span>
+                          <%= f.text_field :price, :placeholder => "Price I'm willing to pay", class: "form-control pull-left"%>
+                          <span class="input-group-addon input-group-addon-opaque">.00</span>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+
+            <div class="panel-footer bg-light-semi m-t-20">
+              <div class="clearfix">
+                <%= link_to :back, :class => "pull-left btn btn-default" do %>
+                    <i class="fa fa-angle-left"></i> Back
+                <% end %>
+                <%= button_tag "submit", class: "btn btn-primary pull-right" do %>
+                    Next <i class="fa fa-angle-right"></i>
+                <% end %>
+            <% end %>
+            <% elsif @task.task_type == 'bid'%>
+                <div class = "bid">
+                  <div class = "col-xs-12 text-center">
+                    Task Type : <%= @task.task_type %>
+                  </div>
+                  What kind of information can we put here instead of stuff that is necessary for auto tasks? But instead for bid tasks?
+                </div>
+                <div class="panel-footer bg-light-semi m-t-20">
+                  <div class="clearfix">
+                    <%= link_to previous_wizard_path, :class => "pull-left btn btn-default" do %>
+                        <i class="fa fa-angle-left"></i> Back
+                    <% end %>
+                    <%= link_to next_wizard_path, class: "btn btn-primary pull-right" do %>
+                        Next <i class="fa fa-angle-right"></i>
+                    <% end %>
+            <% end %>
+                <span class="pull-center wizard-info">
+Step &nbsp;
+<span class="badge badge-primary">3</span>
+&nbsp; of &nbsp;
+<span class="badge label-info">5</span>
+</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+      $("#input-1").rating({'showCaption':true, 'stars':'5', 'min':'0', 'max':'5', 'step':'1', 'size':'sm'});
+      $( ".js-slider" ).slider({ animate: "fast"});
+  </script>

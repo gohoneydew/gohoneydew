@@ -1,0 +1,65 @@
+<div class="modal fade" id="signinmodal" role="dialog" aria-labelledby="signinmodal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content ">
+      <div class="modal-header ">
+        <button type="button" class="close text-white" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <div class="login-content ">
+            <%= form_for(resource, as: resource_name, html:{class: ""}, validate: true , url: session_path(resource_name)) do |f|%>
+                <h1>Rio Runner Sign In</h1>
+                <hr></hr>
+                <div class = "col-sm-5">
+                            <div class="form-group">
+                              <div class="input-group">
+                              <span class="input-group-addon">
+                                      <i class="fa fa-user"></i>
+                              </span><%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email", html:{type:"email", id: "email"} %>
+                              </div>
+                            </div>
+            </br>
+                            <div class="form-group">
+
+                              <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-lock"></i>
+                                                </span>
+                                <%= f.password_field :password, class:"form-control", placeholder: "Password" %>
+                              </div>
+                            </div>
+                            <hr></hr>
+                            <div class="row">
+                              <div class="col-md-6">
+                                <% if devise_mapping.rememberable? -%>
+                                    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+                                <% end -%>
+                              </div>
+                            </div>
+                            <div class="row top-buffer">
+                              <div class="col-md-6 col-md-offset-6">
+                                <div class="form-actions">
+                                  <%= f.submit "Sign in", class:"btn btn-block btn-danger" %>
+                                </div>
+                        <% end %>
+                        </div>
+                          </div>
+
+                        <div class="m-t-20">
+                          Not a member yet? Click <a href="#">here</a> to register.
+                        </div>
+            </div>
+            <div class = "col-sm-5 col-sm-offset-2">
+              <a class=" btn-block btn-social btn-facebook" href="/auth/facebook">
+                <i class="fa fa-facebook"></i>Sign in via Facebook</a>
+              </br>
+              <a class=" btn-block btn-social btn-twitter" href="/auth/twitter">
+                <i class="fa fa-twitter"></i>Sign in via Twitter</a>
+              </br>
+              <a class=" btn-block btn-social btn-linkedin" href="/auth/linkedin">
+                <i class="fa fa-linkedin"></i>Sign in via LinkedIn</a>
+            </div>
+          </div>
+        </div>
+      <div class = "modal-horizontal-divider"></div>
+    </div><!-- /.modal-content -->
+
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

@@ -1,0 +1,27 @@
+<div class="modal modal-dark-lter fade" id="accept" role="dialog" aria-labelledby="accept" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="accept">Rio Runner</h4>
+      </div>
+      <div class="modal-body">
+        <div class = "row text-white-opaque">
+          <div class = "col-sm-10">
+            <h2 class = "text-center"> Accept $<%=number_with_precision(@offer.wallet_price, :precision => 2) %></h2>
+            <p>you need to make sure you read terms and conditions as outlined in your mind</p>
+            <p>You also agree to authorize $<%=number_with_precision(@offer.wallet_price, :precision => 2) %> to your card</p>
+
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <%= link_to "Authorize $#{number_with_precision(@offer.wallet_price, :precision => 2)}", accept_offer_path(@offer) , class: "pull-right btn btn-success" %>
+      </div>
+    </div>
+  </div>
+</div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+

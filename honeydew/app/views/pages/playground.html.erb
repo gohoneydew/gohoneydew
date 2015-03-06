@@ -1,0 +1,18 @@
+
+<div id="page-content-wrapper">
+  <div class="container-fluid">
+    <div class="row m-t-50">
+      <li>
+        <%= link_to "Write Review", "", :class => "btn btn-sm btn-transparent-light", :data => {:toggle => "modal", :target => "#review"} %>
+      </li>
+      <input id="input-1" class="rating" data-min="0" data-max="5" data-step="1">
+
+</div>
+
+
+<%= render 'review_modal' %>
+<script>
+    $("#input-1").rating({'showCaption':true, 'stars':'5', 'min':'0', 'max':'5', 'step':'1', 'size':'sm', 'starCaptions': {1:'Wont Recommend', 2:'OK', 3:'Good', 4:'Recommend', 5:'Highly Recommend'}});
+</script>
+
+

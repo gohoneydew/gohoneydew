@@ -1,0 +1,76 @@
+<div id="page-content-wrapper">
+  <div class="container-fluid ">
+
+    <div class="row">
+      <div class="col-md-9">
+
+        <div class="wizard-steps">
+          <div class="wizard-step">
+            <div class="badge badge-success badge-empty "><i class = "fa fa-check fa-2x "></i></div>
+          </div>
+          <div class="wizard-step">
+            <div class="badge badge-success badge-empty"><i class = "fa fa-check fa-2x "></i></div>
+          </div>
+          <div class="wizard-step">
+            <div class="badge badge-success badge-empty"><i class = "fa fa-check fa-2x "></i></div>
+          </div>
+          <div class="wizard-step">
+            <div class="badge badge-primary badge-empty"></div>
+          </div>
+          <div class="wizard-step">
+            <div class="badge badge-opaque badge-empty"></div>
+          </div>
+        </div>
+
+        <div class="panel panel-bg-opaque wizard-body wizard-body-4">
+          <div class="panel-body ">
+
+            <h1 class = "text-center">Step <strong>4</strong></h1>
+            <h4 class = "text-center">Add Photos</h4>
+            <hr>
+            <%= form_for(@task, url: wizard_path, :method => :put) do |f| %>
+                <div class="row">
+                  <% if @task.errors.any? %>
+                      <div id="error_explanation">
+                        <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+                        <ul>
+                          <% @task.errors.full_messages.each do |msg| %>
+                              <li><%= msg %></li>
+                          <% end %>
+                        </ul>
+                      </div>
+                  <% end %>
+                <div class="row m-t-50">
+                  Below is temporary until photos are fixed
+                 <!-- <div class = "col-xs-8 col-xs-offset-2">
+                    <%= f.label "Drop Files to Upload" %>
+                    <%= f.file_field :photos, class: "dropzone dz-clickable" %>
+                  </div>-->
+                  <div class = "col-xs-8 col-xs-offset-2">
+                    <%= f.text_area :task_date, :value =>"10/3/2014", class: "form-control"%>
+                  </div>
+                </div>
+
+            <div class="panel-footer bg-light-semi m-t-20">
+              <div class="clearfix">
+                <%= link_to previous_wizard_path, :class => "pull-left btn btn-default" do %>
+                    <i class="fa fa-angle-left"></i> Back
+                <% end %>
+                <%= button_tag "submit", class: "btn btn-primary pull-right" do %>
+                    Next <i class="fa fa-angle-right"></i>
+                <% end %>
+            <% end %>
+                <span class="pull-center wizard-info">
+Step &nbsp;
+<span class="badge badge-primary">4</span>
+&nbsp; of &nbsp;
+<span class="badge label-info">5</span>
+</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

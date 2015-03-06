@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Riorunner</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+<div class="s3-loader">
+    <%= render 'layouts/navigation' %>
+      <%= render 'layouts/signinmodal' %>
+    <% if user_signed_in? %>
+    <div id="wrapper">
+      <% end %>
+
+      <!-- Sidebar -->
+      <% if user_signed_in? %>
+      <%= render 'layouts/sidenav' %>
+      <%= render 'layouts/messages_sidebar' %>
+      <a href="#menu-toggle" class="collapse-nav btn btn-sm btn-dark btn-icon" id="menu-toggle">
+        <i class="fa fa-angle-left text"></i>
+        <i class="fa fa-angle-right text-active"></i>
+      </a>
+      <!-- /#sidebar-wrapper -->
+      <% end %>
+      <%= render 'layouts/messages' %>
+      <%= yield %>
+
+      <!-- Page Content -->
+      <!-- /#page-content-wrapper -->
+
+    </div>
+</div>
+</body>
+
+<script>
+    $(".loadingcss").delay(1500).hide(0);
+</script>
+<script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+</script>
+<script>
+    $("#message-menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#messages-sidebar").toggleClass("toggled");
+    });
+
+</script>
+

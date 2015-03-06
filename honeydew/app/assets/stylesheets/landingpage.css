@@ -1,0 +1,452 @@
+/*
+ * Author: Carlos Alvarez
+ * URL: http://alvarez.is
+ *
+ * Project Name: Landing Sumo - Theme 7
+ * URL: http://LandingSumo.com
+ * Version: 1.0
+ */
+
+/*	################################################################
+	1. GENERAL STRUCTURES
+################################################################# */
+
+/* Import fonts */
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,900);
+
+* { 
+	margin: 0;
+	padding: 0px;
+    font-family: 'Lato', sans-serif;
+} 
+body { 
+	background: #fff; 
+	margin: 0; 
+	color: #5a5a5a;
+}
+.landing {
+    background: #fff;
+    margin: 0;
+    color: #5a5a5a;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Lato', sans-serif;
+	font-weight: 300;
+}
+
+
+p { 
+	padding: 0; 
+	margin-bottom: 12px; 
+    font-family: 'Lato', sans-serif;
+	font-weight: 200;
+	font-size: 18px; 
+	line-height: 28px;
+	color: #666; 
+	margin-top: 10px; 
+}
+
+html,
+body {
+	height: 100%;
+}
+
+.alignleft { float: left; }
+.alignright { float: right; }
+.aligncenter {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	clear: both;
+}
+.centered {text-align: center}
+.mt {margin-top: 50px;}
+.mb {margin-bottom: 50px;}
+.mtb {margin-top: 50px; margin-bottom: 50px;}
+.mtb2 { margin-top: 100px; margin-bottom: 100px;}
+.ptb {padding-top: 80px; padding-bottom: 80px;}
+
+.clear {
+	clear: both;
+	display: block;
+	font-size: 0;
+	height: 0;
+	line-height: 0;
+	width:100%;
+}
+::-moz-selection  {
+	color: #fff;
+	text-shadow:none;
+	background:#2B2E31;
+}
+::selection {
+	color: #fff;
+	text-shadow:none;
+	background:#2B2E31;
+}
+*,
+*:after,
+*:before {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+a { 
+	padding: 0;
+	margin: 0;
+	text-decoration: none; 
+	-webkit-transition: background-color .4s linear, color .4s linear;
+	-moz-transition: background-color .4s linear, color .4s linear;
+	-o-transition: background-color .4s linear, color .4s linear;
+	-ms-transition: background-color .4s linear, color .4s linear;
+	transition: background-color .4s linear, color .4s linear;
+	color: #1abc9c;
+}
+a:hover,
+a:focus {
+  text-decoration: none;
+  color:#696E74;
+}
+
+/* BUTTONS */
+.btn-green {
+	background: #1abc9c;
+	color: white;
+	border-radius: 2px;
+}
+
+.btn-green:hover {
+	background: #16a085;
+	color: white;
+}
+
+/* HORIZONTAL LINE */
+hr {
+	border: 1px solid #1abc9c;
+	width: 120px;
+}
+
+/* H4 Global Modification */
+
+h4 {
+	font-weight: 700;
+}
+
+/* Color Theme */
+.green {
+	color: #1abc9c;
+}
+
+/* Size Helper */
+
+.big {
+	font-size: 60px;
+}
+
+.text16 {
+	font-size: 16px;
+}
+
+.text28 {
+	font-size: 28px;
+}
+
+.text28 i {
+	padding: 8px;
+}
+
+/* HEADER SECTION */
+#h {
+	background: url(bgcolor.jpg) no-repeat center top;
+	padding-top: 60px;
+	text-align:center;
+	background-attachment: relative;
+	background-position: center center;
+	min-height: 800px;
+	width: 100%;
+	
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.btn-register {
+    margin-top: 25px;
+    border-radius: 50px;
+    margin-right: 20px;
+    top: 0px;
+    float: right;
+    font-size: 16px;
+}
+.btn-clear {
+    background: transparent;
+    color: rgba(255,255,255,.75);
+    border: 1px solid rgba(255,255,255,.75);
+}
+.btn-clear:hover {
+    background: rgba(255,255,255,.75);
+    color: #2f2f2f;
+}
+.btn-conf {
+    margin-top: 25px;
+    border-radius: 50px;
+    margin-right: 20px;
+    top: 0px;
+    float: right;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+.navbar {
+    display:none
+}
+.landinglogo{
+    max-height:150px;
+    max-width:150px;
+}
+.rw-wrapper{
+    width:80%;
+    position: relative;
+}
+.rw-sentence{
+    margin: 0;
+    text-align: center;
+}
+.rw-sentence span{
+    color: #444;
+    font-size: 200%;
+    font-weight: 100;
+
+}
+.rw-words{
+    display: inline;
+    text-indent: 10px;
+}
+.rw-words-1 span{
+    position: absolute;
+    opacity: 0;
+    overflow: hidden;
+    color: rgba(255,255,255,.45);
+    font-weight: 400;
+    text-transform: uppercase;
+    -webkit-animation: rotateWord 18s linear infinite 0s;
+    -ms-animation: rotateWord 18s linear infinite 0s;
+    animation: rotateWord 18s linear infinite 0s;
+}
+.rw-words-1 span:nth-child(2) {
+    -webkit-animation-delay: 3s;
+    -ms-animation-delay: 3s;
+    animation-delay: 3s;
+}
+.rw-words-1 span:nth-child(3) {
+    -webkit-animation-delay: 6s;
+    -ms-animation-delay: 6s;
+    animation-delay: 6s;
+}
+.rw-words-1 span:nth-child(4) {
+    -webkit-animation-delay: 9s;
+    -ms-animation-delay: 9s;
+    animation-delay: 9s;
+}
+.rw-words-1 span:nth-child(5) {
+    -webkit-animation-delay: 12s;
+    -ms-animation-delay: 12s;
+    animation-delay: 12s;
+}
+.rw-words-1 span:nth-child(6) {
+    -webkit-animation-delay: 15s;
+    -ms-animation-delay: 15s;
+    animation-delay: 15s;
+}
+@-webkit-keyframes rotateWord {
+    0% { opacity: 0; }
+    2% { opacity: 0; -webkit-transform: translateY(-30px); }
+    5% { opacity: 1; -webkit-transform: translateY(0px);}
+    17% { opacity: 1; -webkit-transform: translateY(0px); }
+    20% { opacity: 0; -webkit-transform: translateY(30px); }
+    80% { opacity: 0; }
+    100% { opacity: 0; }
+}
+@-ms-keyframes rotateWord {
+    0% { opacity: 0; }
+    2% { opacity: 0; -ms-transform: translateY(-30px); }
+    5% { opacity: 1; -ms-transform: translateY(0px);}
+    17% { opacity: 1; -ms-transform: translateY(0px); }
+    20% { opacity: 0; -ms-transform: translateY(30px); }
+    80% { opacity: 0; }
+    100% { opacity: 0; }
+}
+@keyframes rotateWord {
+    0% { opacity: 0; }
+    2% { opacity: 0; -webkit-transform: translateY(-30px); transform: translateY(-30px); }
+    5% { opacity: 1; -webkit-transform: translateY(0px); transform: translateY(0px);}
+    17% { opacity: 1; -webkit-transform: translateY(0px); transform: translateY(0px); }
+    20% { opacity: 0; -webkit-transform: translateY(30px); transform: translateY(30px); }
+    80% { opacity: 0; }
+    100% { opacity: 0; }
+}
+@media screen and (max-width: 768px){
+    .rw-sentence { font-size: 18px; }
+}
+@media screen and (max-width: 320px){
+    .rw-sentence { font-size: 9px; }
+    .rw-words-1 { text-transform: none; }
+}
+.rw-sentence-IE{
+    display: none;
+    padding: 30px;
+}
+#h h3.logo {
+	font-weight: 900;
+	text-align: center;
+	color: white;
+	margin-bottom: 120px;
+	border: 3px solid white;
+	width: 150px;
+	padding: 12px;
+}
+
+#h h1 {
+	color: white;
+	font-size: 70px;
+}
+
+.img-landing-iphone{
+    width: 350px;
+}
+#h .continue {
+	font-size: 30px;
+	color: #1abc9c;
+	margin-top: 80px;
+}
+
+/* CALL TO ACTION */
+#cta {
+	background: #2f2f2f;
+	color: white;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+#cta h2 {
+	text-align: center;
+}
+#h h2 {
+    text-align: center;
+    color: rgba(255,255,255,.85);
+    font-weight: 400;
+}
+/* GREY SECTION */
+
+#g {
+	padding-top: 50px;
+	padding-bottom: 50px;
+	background: #f7f8fa;
+}
+/* Extra Section */
+
+ul.extra-features {
+    max-width: 470px;
+    margin-top: 50px;
+}
+
+ul.extra-features li {
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+ul.extra-features .icon {
+    width: 55px;
+    height: 55px;
+    margin-right: 10px;
+    float: left;
+    text-align: center;
+}
+ul.extra-features i {
+    font-size: 38px;
+}
+
+.tabs {
+    margin-bottom   : 50px;
+}
+/* Extra Section */
+ul.extra-features {
+    max-width: 100%;
+}
+.list-inline {
+    margin-left: 0px;
+}
+.tabs {
+    margin-top: 0px;
+}
+.tab-pane figure {
+    margin-bottom: 20px;
+}
+
+
+#testimonial {
+	padding-bottom: 50px;
+	padding-top: 50px;
+	min-height: 450px;
+	background: #2f2f2f;
+	color: white;
+}
+
+#testimonial p {
+	font-size: 16px;
+	color: #ccc;
+}
+
+#testimonial hr {
+	border: solid 1px #ccc;
+	width: 80px;
+}
+
+
+/* GENERAL CONF */
+
+i {
+	margin-right: 10px;
+}
+
+input {
+	font-size: 18px;
+	min-height: 40px;
+	border-radius: 2px;
+	line-height: 20px;
+	padding: 11px 30px 12px;
+	border: none;
+	margin-bottom: 10px;
+	background-color: #e9f0f2;
+	-webkit-transition: background-color 0.2s;
+	transition: background-color 0.2s;
+}
+
+.subscribe-input {
+	float: left;
+	width: 70%;
+	text-align: left;
+	margin-right: 2px;
+}
+
+.subscribe-submit {
+	right: 0;
+}
+
+/*Overflow Hidden*/
+
+.of {
+	overflow: hidden;
+}
+.img-review{
+    max-width: 100%;
+    width: 120px;
+    height: 120px;
+
+}

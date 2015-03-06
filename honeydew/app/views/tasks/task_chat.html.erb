@@ -1,0 +1,91 @@
+<div id="page-content-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3">
+        <section class="panel bg-opaque">
+          <header class="panel-heading bg-dark-opaque">
+            <h4 class = "gen-case">
+            <%= link_to 'javascript:history.go(-1);' do %>
+                <i class="fa fa-chevron-left text-white"></i>
+            <% end %>
+            </h4>
+          </header>
+          <div class="panel-body">
+            <ul class="nav nav-pills nav-stacked task-nav">
+              <% @tasks.each do |task| %>
+                  <li class="inactive"><%= link_to taskchat_path(task.id) do %>
+                        <% if task.messages.unread.present? %>
+                            <span class="badge small pull-right"><%= task.messages.unread.count %></span>
+                        <% end %>
+                        <%=h truncate(task.subject, :length => 60) %>
+                    <% end %></li>
+              <% end %>
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      <div class="col-sm-9">
+        <section class="panel bg-opaque">
+          <header class="panel-heading bg-dark-opaque">
+            <h4 class="gen-case">Inbox (2)
+            </h4>
+          </header>
+
+          <div class="panel-body minimal">
+            <div class="table-inbox-wrap ">
+              <div class = "col-lg-12">
+                <%= link_to @task.subject, task_path(@task)%>
+                <% if @message_last.present? %>
+                <p class="text-center text-info m-t-10 small">
+                  Last Message: <span class="text-muted"><td class="text-right"><% if @message_last.created_at.to_date > 7.days.ago %>
+                      <%= time_ago_in_words(@message_last.created_at) %> ago
+                  <% else %> <%= @message_last.created_at.strftime("%B %d") %><%end %></td></span>
+                </p>
+                <% else %>
+                    <p class="text-center text-info m-t-10 small">
+                      Last Message: <span class="text-muted"><td class="text-right"> no messages</td></span>
+                    </p>
+                <% end %>
+                <div class = "chat-container-modal row" id = "chat-container-modal">
+                  <% @messages.each do |message| %>
+                      <div class = "row">
+                        <p class="<%=chat_bubble_position(message)%>">
+                          <%= link_to image_tag(User.find(message.sender_id).image_url, class: avatar_position(message)), user_path(message.sender_id)%>
+                          <%= message.body %>
+                        </p>
+                      </div>
+                  <% end %>
+                </div>
+                <div class = "row m-t-10">
+                  <div class = "col-xs-10">
+                    <%= form_for(@message) do |f| %>
+                        <%= f.text_field :body, autofocus: true, class: "form-control" %>
+                        <%= f.hidden_field(:task_id, :value => @task.id)%>
+                        <%= f.hidden_field(:message_type, :value => "chat")%>
+                        <%= f.hidden_field(:recipient_id, :value => recipient_id(@task))%>
+
+                        </div>
+                        <div class="input-group-btn input-search-btn">
+
+                          <%= f.button "", name: nil, class: "btn-search btn btn-danger" do %>
+                              <i class = "fa fa-reply visible-sm visible-xs"></i><span class = "hidden-sm hidden-xs">Reply</span>
+                          <% end %>
+                        </div>
+                    <% end %>
+                    </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    $("tr[data-link]").click(function() {
+        window.location = $(this).data("link")
+    });
+    $("#chat-container-modal").animate({ scrollTop: $('#chat-container-modal')[0].scrollHeight}, 1000);
+</script>

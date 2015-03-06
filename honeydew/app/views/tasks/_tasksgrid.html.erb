@@ -1,0 +1,18 @@
+<div class = "row">
+  <div class = "col-xs-12">
+      <div class="grid">
+        <% @tasks.each do |task| %>
+
+            <figure class="effect-milo">
+              <%= image_tag("rrlogo.png") %>
+              <figcaption>
+                <h2><%=task.subject%> <span><%= task.description %></span></h2>
+                <p>Milo went to the woods. He took a fun ride and never came back.</p>
+                <a href="<%=task_path(task)%>">View more</a>
+              </figcaption>
+            </figure>
+
+        <% end %>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,216 @@
+<div class="modal modal-opaque-white fade" id="offers" role="dialog" aria-labelledby="offers" aria-hidden="true">
+  <div class="modal-dialog-fullscreen modal-dialog ">
+    <div class="modal-content-fullscreen modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </br>
+        </br>
+        <div class="tabs tabs-style-bar">
+          <nav>
+            <ul>
+              <li><a href="#" class="fa fa-lg fa-comment-o" data-toggle ="modal" data-dismiss="modal" data-target = "#chat"><span class = "hidden-sm hidden-xs">Chat</span></a></li>
+              <li class = "tab-current"><a href="#" class="fa fa-lg fa-desktop" data-toggle ="modal" data-target = "#offers"><span class = "hidden-sm hidden-xs">Offers</span></a></li>
+              <li><a href="#section-bar-4" class="fa fa-lg fa-upload"><span class = "hidden-sm hidden-xs">Upload</span></a></li>
+              <li><a href="#section-bar-5" class="fa fa-lg fa-cog"><span class = "hidden-sm hidden-xs">Settings</span></a></li>
+              <li class = "hidden-xs"><a href="#" class="fa fa-lg fa-compress" data-dismiss="modal"><span class = "hidden-sm hidden-xs">Close</span></a></li>
+            </ul>
+          </nav>
+        </div><!-- /tabs -->
+      </div>
+      <% unless @task.status != "open" %>
+          <div role="tabpanel" class="tab-pane" id="offers">
+            <% @offers.each do |offer| %>
+                <ol>
+                  <li>
+                    <% #TODO:todo%>
+                    <% if @offer.sender_id.nil? %>
+                    <% else %>
+                        <p class = "text-success"><%= number_with_precision(offer.wallet_price, :precision => 2) %></p> from  <%= link_to (User.find(offer.sender_id).first_name), user_path(offer.sender_id)  %>
+                    <% end %>
+
+                    <%= link_to "Offer", offer_path(offer) %>
+                  </li>
+                </ol>
+            <% end %>
+          </div>
+
+      <% end %>
+      <div class="container-fluid ">
+        <div class="row" >
+          <div class="col-md-12">
+
+            <div class="row">
+              <div class="col-md-6 col-md-offset-3">
+                <div class="timeline-top">
+                  <div class="panel ">
+                    <div class="panel-heading panel-colorize">
+
+                      <div class="panel-title">
+                        <a href="#" class="v-mid badge badge-danger badge-rounded badge-empty badge-grow"></a>
+                        <span class="mid">title</span>
+                      </div>
+
+                      <span class="pull-right text-semi"><i class="icm icm-clock"></i> <span>8m ago</span></span>
+                    </div>
+
+                    <div class="panel-body panel-colorize">
+                      <p>Labore aliquid et aut ipsa ut quasi consectetur. est sint accusantium debitis quia temporibus voluptas sed non unde quae et. quasi quas incidunt hic qui voluptas est</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <ul class="timeline timeline-mid-light-dk timeline-badges-success-lt">
+
+
+              <li class="">
+                <div class="timeline-badge"></div>
+                <div class="panel ">
+                  <div class="panel-heading panel-colorize">
+
+                    <div class="panel-title">
+                      <a href="#" class="v-mid badge badge-success-lt badge-rounded badge-empty badge-grow"></a>
+                      <span class="mid">Brendon Chan</span>
+                    </div>
+                    <span class="pull-right text-semi"><i class="icm icm-clock"></i> <span>8m ago</span></span>
+                  </div>
+
+                  <div class="panel-body panel-colorize">
+                    <p>Dignissimos et possimus sequi eos. eius eligendi corrupti odit blanditiis voluptatem nostrum corrupti consequatur dolor fugit tempora est facilis praesentium. sequi esse aliquam atque dolorem voluptas voluptatibus dolores expedita voluptas molestias. cupiditate quo dignissimos error iure voluptatibus incidunt error non et. eveniet laudantium laborum nulla delectus odit sapiente quas eum numquam beatae. molestias et commodi autem eos enim enim consequatur</p>
+                  </div>
+
+                </div>
+              </li>
+
+              <li class="timeline-inverted">
+                <div class="timeline-badge"></div>
+                <div class="panel panel-success">
+                  <div class="panel-heading panel-colorize">
+
+                    <div class="panel-title">
+                      <a href="#" class="v-mid badge badge-light badge-rounded badge-empty badge-grow"></a>
+                      <span class="mid">Colorize options</span>
+                    </div>
+                    <span class="pull-right text-semi"><i class="icm icm-clock"></i> <span>8m ago</span></span>
+                  </div>
+
+                  <div class="panel-body panel-colorize">
+                    <p>Est quia aliquam ut temporibus dolor provident assumenda consequatur dignissimos non atque. amet sunt temporibus autem possimus vero facere aliquid qui sit inventore sunt ipsum. odio et et et nihil ipsam dolorem. repudiandae sed incidunt qui ut cum sit dolores delectus dolores nulla cumque. laboriosam corrupti quia quia alias quia totam et tenetur labore. numquam labore magnam sit quisquam molestias quia illo minus</p>
+                  </div>
+
+                </div>
+              </li>
+
+              <li class="">
+                <div class="timeline-badge"></div>
+                <div class="panel ">
+                  <div class="panel-heading panel-colorize">
+
+                    <div class="panel-title">
+                      <a href="#" class="v-mid badge badge-danger-lt badge-rounded badge-empty badge-grow"></a>
+                      <span class="mid">Bonita Terrell</span>
+                    </div>
+                    <span class="pull-right text-semi"><i class="icm icm-clock"></i> <span>8m ago</span></span>
+                  </div>
+
+                  <div class="panel-body panel-colorize">
+                    <p>Nisi at sit veniam dicta in reprehenderit. sit dolor repellat et recusandae officiis corporis in eius dicta sed ipsam. rem veritatis consequuntur veniam quidem voluptatibus ea corporis ut autem modi deserunt. nihil iusto vel placeat asperiores perferendis velit qui accusamus consectetur doloribus eveniet vel odit. autem molestiae ratione autem sunt enim libero est sint voluptatem recusandae modi quibusdam eveniet. quia id atque eius facere minus in eum minima</p>
+                  </div>
+
+                </div>
+              </li>
+
+              <li class="timeline-inverted">
+                <div class="timeline-badge"></div>
+                <div class="panel ">
+                  <div class="panel-heading panel-colorize">
+
+                    <div class="panel-title">
+                      <a href="#" class="v-mid badge badge-success-lt badge-rounded badge-empty badge-grow"></a>
+                      <span class="mid">Sienna Heath</span>
+                    </div>
+                    <span class="pull-right text-semi"><i class="icm icm-clock"></i> <span>8m ago</span></span>
+                  </div>
+
+                  <div class="panel-body panel-colorize">
+                    <p>Laudantium doloremque qui placeat vel nemo velit veritatis quos. eos a in iusto nemo qui quod molestiae amet odio nisi commodi eius occaecati culpa. praesentium dolorem qui deserunt reprehenderit voluptatum pariatur nesciunt non. harum voluptates temporibus vitae impedit placeat quis in consequatur voluptates praesentium. eligendi illo libero et. nihil quo voluptas iste debitis ea esse quidem laboriosam doloribus voluptatum non voluptatibus</p>
+                  </div>
+
+                </div>
+              </li>
+
+              <li class="">
+                <div class="timeline-badge"></div>
+                <div class="panel ">
+                  <div class="panel-heading panel-colorize">
+
+                    <div class="panel-title">
+                      <a href="#" class="v-mid badge badge-primary-lt badge-rounded badge-empty badge-grow"></a>
+                      <span class="mid">Ciara Blanchard</span>
+                    </div>
+                    <span class="pull-right text-semi"><i class="icm icm-clock"></i> <span>8m ago</span></span>
+                  </div>
+
+                  <div class="panel-body panel-colorize">
+                    <p>Beatae velit fugit sed. atque rerum est debitis aliquam saepe ea. rerum exercitationem voluptate velit rem. accusamus aliquam quo at labore natus inventore nam possimus nulla iste doloribus minus consequuntur. iste qui nihil necessitatibus est voluptas ducimus qui voluptatum iusto. eius officia blanditiis non inventore occaecati doloremque molestiae ad modi ullam occaecati voluptate officia sed. aut quia facilis ipsum et dolorum est fugiat nulla autem nesciunt voluptas aliquam</p>
+                  </div>
+
+                </div>
+              </li>
+
+              <li class="timeline-inverted">
+                <div class="timeline-badge"></div>
+                <div class="panel ">
+                  <div class="panel-heading panel-colorize">
+
+                    <div class="panel-title">
+                      <a href="#" class="v-mid badge badge-warning-lt badge-rounded badge-empty badge-grow"></a>
+                      <span class="mid">Sadie Connolly</span>
+                    </div>
+                    <span class="pull-right text-semi"><i class="icm icm-clock"></i> <span>8m ago</span></span>
+                  </div>
+
+                  <div class="panel-body panel-colorize">
+                    <p>Ad ullam reprehenderit aut eos dolorem doloribus quibusdam porro ipsum sit. laboriosam tempore quo voluptates facilis ut at ad aut aperiam. odio veniam tempora nihil. autem nihil tenetur doloremque saepe beatae hic suscipit ea. dolores aut a ipsum omnis omnis sint assumenda dolor iusto aut. nulla sunt voluptatibus mollitia pariatur praesentium debitis possimus adipisci aspernatur consequatur ad aut</p>
+                  </div>
+
+                </div>
+              </li>
+
+              <li class="">
+                <div class="timeline-badge"></div>
+                <div class="panel ">
+                  <div class="panel-heading panel-colorize">
+
+                    <div class="panel-title">
+                      <a href="#" class="v-mid badge badge-danger-lt badge-rounded badge-empty badge-grow"></a>
+                      <span class="mid">Abigail Hardin</span>
+                    </div>
+                    <span class="pull-right text-semi"><i class="icm icm-clock"></i> <span>8m ago</span></span>
+                  </div>
+
+                  <div class="panel-body panel-colorize">
+                    <p>Quia sunt doloribus modi ea impedit. minima consequuntur fugit aut est porro voluptatum voluptas harum voluptas illo iste dignissimos. quia delectus fugit exercitationem rerum tempora qui dignissimos vel molestiae quidem odio doloribus sunt. ratione exercitationem voluptatem saepe quam et ea mollitia ipsam nihil aut voluptatum aspernatur sapiente. totam rem consequatur nulla et rerum repellat. laudantium possimus sed tenetur beatae dolorem</p>
+                  </div>
+
+                </div>
+              </li>
+
+              <li class="clearfix" style="float: none;"></li>
+
+            </ul>
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="text-center timeline-bottom">
+                  <a class="btn btn-success-lt" href="#">Load More</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

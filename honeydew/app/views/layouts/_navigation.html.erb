@@ -1,0 +1,55 @@
+
+<!-- Head Start -->
+
+<!-- Menu Bar End -->
+<nav class="navbar navbar-default navbar-inplace" role="navigation">
+  <nav class="nav navbar-nav pull-left">
+    <a class="navbar-brand" href="/">
+      <%=image_tag "honeydewsimple.png", :alt => "Brand", :class => "navbar-brand" %>
+    </a>
+    <% if user_signed_in? %>
+        <li>
+
+        </li>
+    <% end %>
+  </nav>
+      <ul class="nav navbar-nav pull-right">
+   <% if user_signed_in? %>
+        <li class="dropdown visible-xs">
+          <a href="" data-toggle="dropdown" class="navbar-img-link" title="profile settings">
+                <%= image_tag(current_user.image_url, :class => "pull-left img-circle") %>
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu panel user-menu menu animated fadeInDown">
+            <div class = "panel-heading bg-dark-opaque">
+                <li class = "text-center">Signed in as <%=current_user.full_name %></li>
+            </div>
+            <li><%= link_to myriorunner_path do %>
+                  <i class="fa fa-dashboard">&nbsp; My Rio Runner</i>
+              <% end %></li>
+            <li><%= link_to user_path(current_user.id) do %>
+                  <i class="fa fa-user">&nbsp;Profile</i>
+              <% end %></li>
+            <li><%= link_to "/users/#{current_user.id}#editprofile" do %>
+                  <i class="fa fa-cog">&nbsp;Settings</i>
+              <% end %></li>
+            <hr></hr>
+            <li><%= link_to destroy_user_session_path, :method => :delete do %>
+                  <i class="fa fa-sign-out fa-fw text-danger">&nbsp;<span class = "text-danger">Sign Out</span></i>
+              <% end %></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#message-menu-toggle" class="btn btn-navbar-opaque pull-right" id="message-menu-toggle" rel="tooltip" data-placement="left" title="Toggle Messages"><i class = "fa fa-comments-o fa-lg"><% if current_user.messages.where(:unread => true).present? %><span class="badge badge-corner"><%=current_user.messages.where(:unread => true).count %></span><% end%></i></a>
+        </li>
+   <% else %>
+            <li class = "pull-right"><%= link_to root_path do %>
+                  <i class="fa fa-home fa-fw">&nbsp;</i>&nbsp;
+              <% end %></li>
+            <li class = "pull-right"><%= link_to help_path do %>
+                  <i class="fa fa-question-circle fa-fw">&nbsp;</i>&nbsp;
+              <% end %></li>
+            <li class = "pull-right"><a href = "#" data-toggle ="modal" data-target = "#signinmodal">Login</a></li>
+            <li class = "pull-right"><%= link_to('Register', new_user_registration_path)  %> </li>
+   <% end %>
+</nav>

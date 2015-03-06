@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sender_id: 1
+  recipient_id: 1
+  subject: MyText
+  body: MyText
+  task_id: 1
+  proposed_price: 1
+  wallet_price: 1
+
+two:
+  sender_id: 1
+  recipient_id: 1
+  subject: MyText
+  body: MyText
+  task_id: 1
+  proposed_price: 1
+  wallet_price: 1
