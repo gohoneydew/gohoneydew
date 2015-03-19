@@ -11,6 +11,14 @@ class User < ActiveRecord::Base
   has_many :authentications, dependent: :destroy
   has_many :offers, :foreign_key => "recipient_id", dependent: :destroy
 
+  has_attached_file :profile_picture, styles: {
+      thumb: '100x100>',
+      square: '200x200#',
+      medium: '300x300>',
+      large: '600x600>',
+      xlarge: '900x900>'
+  }
+  validates_attachment_content_type :profile_picture, :content_type => /\Aimage\/.*\Z/
 
   validates_presence_of :first_name, :last_name, :email
   validates_length_of :first_name, :maximum => 15
