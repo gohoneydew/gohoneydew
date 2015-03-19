@@ -1,308 +1,669 @@
-<div id="page-content-wrapper">
-  <div class="container-fluid">
-    <div class="row">
-      <ol class="breadcrumb pull-right">
-        <li><%= link_to "All Jobs", job_categories_path %></li>
-        <li><%= link_to @job_category.name, job_category_path(@job_category) %></li>
-        <% if @tag.present? %>
-            <li class="active"><%=@tag %></li>
-        <% else %>
-            <li class="active"><%= @task.subject %></li>
-        <% end %>
-      </ol>
-    </div>
-
-
-   <% if current_user.id == @task.wallet_id %>
-
-
-      <section>
-        <div class="tabs tabs-style-bar">
-          <nav>
-            <ul>
-              <li class=" active"><a href="#home" role ="tab" data-toggle="tab" class="fa fa-lg fa-home"><span class = "hidden-sm hidden-xs">Job</span></a></li>
-              <li><%= link_to "", :class => "fa fa-lg fa-comment-o", :data => {:toggle => "modal", :target => "#chat"} do %>
-                    <span class = "hidden-sm hidden-xs">Chat</span>
-              <% end %>
-              </li>
-              <li><a href="#" class="fa fa-lg fa-desktop" data-toggle ="modal" data-target = "#offers"><span class = "hidden-sm hidden-xs">Offers</span></a></li>
-              <% if @task.status == "pending" || @task.status == "closed" %>
-              <li><a href="#upload" class="fa fa-lg fa-upload" data-toggle = "tab"><span class = "hidden-sm hidden-xs">Accepted Task</span></a></li>
-              <% end %>
-              <li><a href="#settings" class="fa fa-lg fa-cog" data-toggle = "tab"><span class = "hidden-sm hidden-xs">Settings</span></a></li>
-            </ul>
-          </nav>
-        </div><!-- /tabs -->
-      </section>
-
-        <div class="row userdata">
-          <div class="col-xs-10 col-xs-offset-1">
-            <div class=" tab-content">
-              <div role="tabpanel" class="tab-pane active" id="home"></div>
-              <% if @task.status == "pending" || @task.status == "closed" %>
-              <div role="tabpanel" class="tab-pane" id="upload">
-                <div class = "row semi-well-lt em-background-box-actions">
-                  <div class = "col-xs-6">
-                    <ul class="list-inline no-margin v-mid-row">
-                      <li>
-                        <%= link_to @task, :rel => "tooltip", :title => 'Delete Task', :method => :delete, :data => {:confirm => "Are you sure?"} do %>
-                            <i class="fa fa-trash-o fa-lg">&nbsp;</i>
-                        <% end %>
-                      </li>
-                      <li>
-                        <%= link_to edit_task_path(@task), :rel => "tooltip", :title => 'Edit Task' do %>
-                            <i class="fa fa-pencil fa-lg">&nbsp;</i>
-                        <% end %>
-                      </li>
-                      <li class="hidden-xs">
-                        <a href="#" rel="tooltip" title="Clint Chung">
-                          <img class="img-circle" src="../../images/faker/avatars/48/Faces_Users-20.png" />
-                        </a>
-                      </li>
-                      <li class="hidden-xs">
-                        <a href="#" rel="tooltip" title="Emma Morgan">
-                          <img class="img-circle" src="../../images/faker/avatars/48/Faces_Users-23.png" />
-                        </a>
-                      </li>
-                      <li class="text-center">
-                        <h5 class="base-header">Followers</h5>
-                        <h4 class="base-header major">4.884</h4>
-                      </li>
-                      <% if @task.status == 'pending' %>
-                          <li>
-                            <%= link_to "Job is complete", taskcompletion_path(@task), :class => "btn btn-sm btn-transparent-light" %>
-                          </li>
-                      <% elsif @task.status == 'closed' %>
-                          <% if @task.review.present? %>
-                          Review already written, nothing else to see here
-                          <% else %>
-                              <li>
-                                <%= link_to "Write Review", "", :class => "btn btn-sm btn-transparent-light", :data => {:toggle => "modal", :target => "#review"} %>
-                              </li>
-                          <% end %>
-                      <% end %>
-
-
-                    </ul>
-                  </div>
-                  <div class = "col-xs-6">
-                    <div class = "pull-right">
-                      <ul class="list-inline no-margin v-mid-row">
-                        <li style="width: 80px; height: 30px;">
-                          <div class="sparkline-bar" data-color="danger-lt"><!--15,16,4,11,7,12,19,23,13--></div>
-                        </li>
-                        <li class="text-center">
-                          <h5 class="base-header">Runner</h5>
-                          <h4 class="base-header major">
-                                <%= image_tag(@runner.image_url , :class => "img-circle img-icon") %>
-                            <%=link_to @runner.private_name, user_path(@runner) %>
-                          </h4>
-                        </li>
-
-                        <li style="width: 80px; height: 30px;">
-                          <div class="sparkline-bar" data-color="success-lt"><!--12,11,19,16,15,4,13,23,7--></div>
-                        </li>
-                        <li class="text-center">
-                          <h5 class="base-header">Views</h5>
-                          <h4 class="base-header major"><%= @task.viewcalc %></h4>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <% end %>
-              <div role="tabpanel" class="tab-pane" id="settings">
-              <div class = "row semi-well-lt em-background-box-actions">
-                <div class = "col-xs-6">
-                  <ul class="list-inline no-margin v-mid-row">
-                    <li>
-                      <%= link_to @task, :rel => "tooltip", :title => 'Delete Task', :method => :delete, :data => {:confirm => "Are you sure?"} do %>
-                          <i class="fa fa-trash-o fa-lg">&nbsp;</i>
-                      <% end %>
-                    </li>
-                    <li>
-                      <%= link_to edit_task_path(@task), :rel => "tooltip", :title => 'Edit Task' do %>
-                          <i class="fa fa-pencil fa-lg">&nbsp;</i>
-                      <% end %>
-                    </li>
-                    <li class="hidden-xs">
-                      <a href="#" rel="tooltip" title="Clint Chung">
-                        <img class="img-circle" src="../../images/faker/avatars/48/Faces_Users-20.png" />
-                      </a>
-                    </li>
-                    <li class="hidden-xs">
-                      <a href="#" rel="tooltip" title="Emma Morgan">
-                        <img class="img-circle" src="../../images/faker/avatars/48/Faces_Users-23.png" />
-                      </a>
-                    </li>
-                    <li class="text-center">
-                      <h5 class="base-header">Followers</h5>
-                      <h4 class="base-header major">4.884</h4>
-                    </li>
-                    <li>
-                      <a class="btn btn-sm btn-transparent-light" href="#">View All</a>
-                    </li>
-                  </ul>
-                </div>
-                <div class = "col-xs-6">
-                  <div class = "pull-right">
-                    <ul class="list-inline no-margin v-mid-row">
-                      <li style="width: 80px; height: 30px;">
-                        <div class="sparkline-bar" data-color="danger-lt"><!--15,16,4,11,7,12,19,23,13--></div>
-                      </li>
-                      <li class="text-center">
-                        <h5 class="base-header">Average Price</h5>
-                        <h4 class="base-header major">$30.593</h4>
-                      </li>
-
-                      <li style="width: 80px; height: 30px;">
-                        <div class="sparkline-bar" data-color="success-lt"><!--12,11,19,16,15,4,13,23,7--></div>
-                      </li>
-                      <li class="text-center">
-                        <h5 class="base-header">Views</h5>
-                        <h4 class="base-header major"><%= @task.viewcalc %></h4>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                </div>
-                </div>
-              <div role="tabpanel" class="tab-pane" id="info">haha</div>
-            </div>
-          </div>
-        </div>
-        <% else %>
-        <div class="row taskdata">
-          <div class="col-xs-10 col-xs-offset-1">
-            <div class="semi-well-lt em-background-box-actions">
-              <div class = "row">
-                <div class = "col-xs-6">
-                  <% if @wallet.image_url.present? %>
-                      <%= image_tag(@wallet.image_url , :class => "img-circle img-icon") %>
-                  <% else %>
-                      <%= image_tag('avatar1_small.jpg', :class => "img-circle img-icon") %>
-                  <% end %>
-                  <%=link_to "#{@wallet.first_name} #{@wallet.last_initial}.", user_path(@wallet) %> (Owner)
-                </div>
-                <div class = "col-xs-6">
-                  <ul class="list-inline  v-mid-row">
-                    <li class="pull-right"><a href = "#" data-toggle ="modal" data-target = "#messaging"><i class="fa fa-pencil fa-lg"></i></a><span class = "small">  Contact Wallet? </span></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+<div class="em-job-background-box jobheader">
+  <%= image_tag("gardening.jpeg", :class => "image-header")  %>
+  <div id="page-content-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <ol class="breadcrumb pull-right ">
+          <ol class="breadcrumb pull-right">
+            <li><%= link_to "All Jobs", job_categories_path %></li>
+            <li><%= link_to @job_category.name, job_category_path(@job_category) %></li>
+            <% if @tag.present? %>
+                <li class="active"><%=@tag %></li>
+            <% else %>
+                <li class="active"><%= @task.subject %></li>
             <% end %>
-
-
-
-
-
-
-
-
-    <div class = "taskcontainer">
-      <div class = "row">
-        <div class="col-md-6">
-          <%= image_tag("garage.jpg" , :class => "img-responsive pull-left") %>
-          <%= image_tag("garage.jpg" , :class => "img-responsive img-thumbnail img-xs") %>
-          <%= image_tag("garage.jpg" , :class => "img-responsive img-thumbnail img-xs") %>
-          <%= image_tag("garage.jpg" , :class => "img-responsive img-thumbnail img-xs") %>
-        </div>
-        <div class = "col-md-6">
-          <h2 class = "text-black"><%=@task.subject%></h2>
-          <% if @task.task_type == "auto" %>
-          <div class = "tx-div small"></div>
-
-          <h1 class = "price">$<%=number_with_precision(@task.price * 0.85, :precision => 2) %></h1>
-          <h4 class = "text-black">Rating Required:</h4>
-          <div class="progress">
-            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: <%=@task.rating_required.to_f %>%">
-              <span class="text-black-dk"><%=@task.rating_required%></span>
-            </div>
-          </div>
-              <h4 class = "text-black">Your Rating:</h4>
-          <div class="progress">
-            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: <%=@task.average_rating(current_user).to_f %>%">
-              <span class="text-black-dk"><%=@task.average_rating(current_user)%></span>
-            </div>
-          </div>
-          <% end %>
-          <div class = "tx-div small"></div>
-          <div class = "col-md-8">
-            <h4 class = "text-black"><%= @task.description %></h4>
-          </div>
-          <div class = "col-md-8">
-            <h4 class = "text-black">
-              <% @task.todoitems.each do |todoitem| %>
-                  <li><%= todoitem.body %></li>
-              <% end %>
-            </h4>
-          </div>
-          <div class = "col-xs-12">
-            <span class="posted_in text-black">Task Type:
-              <%= link_to @task.task_type, help_path %>
-          </span>
-            <span class="posted_in text-black">Task Status:
-              <%= link_to @task.status, :rel => "tooltip", :title => "#{@task.status}" do %>
-              <i class = "<%=task_status_helper(@task.status)%>" ></i>
-              <% end %>
-          </span>
-          <span class="posted_in text-black">Category:
-            <%= link_to @job_category.name, job_category_path(@job_category) %>
-          </span>
-            <% if @task.tags.any? %>
-              <span class="posted_in_bottom text-black">Tags:
-                <%= raw @task.tag_list.map{ |t| link_to t, tag_path(t), class: "tag tag-black"}.join(' ')%>
-              </span>
-            <% end %>
-            <div class = "col-md-12">
-              <h4 class="text-muted">This really needs to go into a helper</h4>
-              <% if current_user.id != @task.wallet_id %>
-                  <% if @task.status == 'open' %>
-                      <% if @task.task_type == "auto" %>
-                          <% if @task.average_rating(current_user) >= @task.rating_required %>
-                                  <a href = "#" data-toggle ="modal" data-target = "#taskacceptance" class = "btn btn-block btn-inverse">This Task Is For Me</a>
-                          <% else %>
-                              <a href="javascript:;" class="btn btn-inverse btn-block disabled">Your rating doesn't allow this task</a>
-                          <% end %>
-                      <% elsif @task.task_type == "bid" %>
-                          <a href = "#" data-toggle ="modal" data-target = "#makeoffer" class = "btn btn-inverse btn-block">Bid on this task</a>
-                      <% end %>
-                  <% elsif @task.status == 'pending' %>
-                      <div class = "btn btn-block btn-danger-dk">This task is pending, do something here</div>
-                  <% elsif @task.status == 'closed' %>
-                      <%= link_to "Write Review", "", :class => "btn btn-block btn-inverse", :data => {:toggle => "modal", :target => "#review"} %>
-                  <% end %>
-              <% end %>
-            </div>
-            </br>
-            </br>
-            <div class = "tx-div small m-t-50"></div>
-            <div class = "col-md-offset-1 text-center">
-            <a href="mailto:enteryour@addresshere.com?subject='Bjorn%20Tee%20SS%20Jack%20%26%23038%3B%20Jones'&amp;body=Check%20this%20out:%20'http://tabaclothing.com/product/bjorn-tee-ss-jack-jones/'" title="Email Job" rel="tooltip">
-              <i class="fa fa-envelope-o fa-lg socialicon email"></i>
-            </a>
-            <a href="#" title="Share on Facebook" rel="tooltip">
-              <i class="fa fa-facebook fa-lg socialicon facebook"></i>
-            </a>
-            <a href="#" title="Share on LinkedIn" rel="tooltip">
-              <i class="fa fa-linkedin fa-lg socialicon linkedin"></i>
-            </a>
-            </div>
-          </div>
-        </div>
-
+          </ol>
+        </ol>
       </div>
-      <div class = "row">
-        <div class = "col-md-12">
-
+      <div class="row">
+        <div class="col-md-6">
+          <h1 class = "headertext"><%= @task.subject %></h1>
+          <% if @task.local? %>
+          <h5 class = "text-white-opaque"><i class = "fa fa-map-marker fa-lg"></i> <%= @task.zipcode %>, Albuquerque, NM</h5>
+          <% end %>
+          <h5 class = "text-white-opaque">Posted<% if @task.created_at.to_date > 7.days.ago %>
+                <%= time_ago_in_words(@task.created_at) %> ago
+            <% else %> <%= @task.created_at.strftime("%B %d") %><%end %>  by <%= link_to user_path(@wallet.id) do %>
+                <%= image_tag(@wallet.image_url, :class => " img-circle img-icon") %>
+                <%= @wallet.private_name %>
+                <% end %>
+        </div>
+        <div class="col-md-3 pull-right">
+          <a href="#"  class = "btn-rounded">
+            <i class="fa fa-circle <%= task_status(@task.status) %> "></i> <%= @task.status %>
+          </a>
+          <a href="#" title="Views" rel="tooltip" class = "btn-rounded">
+            <i class="fa fa-eye fa-lg "></i> <%= @task.views %>
+          </a>
+          <a href="#" data-toggle ="modal" data-target = "#messaging" title="Contact Wallet" rel="tooltip" class = "btn-round">
+            <i class="fa fa-pencil fa-lg  email"></i>
+          </a>
+          <a href="#" title="Save Job" rel="tooltip" class = "btn-round">
+            <i class="fa fa-bookmark fa-lg"></i>
+          </a>
         </div>
       </div>
     </div>
   </div>
+</div>
+<div class="panel panel-success bg-opaque" id="rid3d271956147df2ebd2ebe7c8be0f95553">
+<div class="panel-header panel-handle panel-colorize">
+  <ul class="nav nav-justified-all ">
+    <% if @wallet == current_user %>
+        <li class="">
+          <a data-toggle="tab" href="#summary">Summary</a>
+        </li>
+        <li class="">
+          <a data-toggle="tab" href="#offers">Offers</a>
+        </li>
+    <% end %>
+    <li class="">
+      <a data-toggle="tab" href="#timeline">Timeline</a>
+    </li>
+    <li class="">
+      <a data-toggle="tab" href="#tab3">Photos</a>
+    </li>
+    <li class="">
+      <a data-toggle="tab" href="#tab3">Map</a>
+    </li>
+  </ul>
+</div>
+<div class="panel-body-collapse collapse in">
+  <div class="panel-body tab-content">
+    <% if @wallet == current_user %>
+    <div class="tab-pane fade active in" id="summary">
+      <div class="panel-body text-center">
+        <div class="row">
+          <div class="col-xs-4 panel-line-right">
+            <%= link_to edit_task_path, :class => "text-normal" do %>
+              <i class="fa fa-pencil fa-lg"></i>
+              <div>Edit Job</div>
+            <% end %>
+
+          </div>
+          <div class="col-xs-4 panel-line-right">
+            <%= link_to @task, :method => :delete, :data => {:confirm => "Are you sure?"}, :class => "text-normal" do %>
+                <i class="fa fa-trash-o fa-lg"></i>
+                <div>Delete Job</div>
+            <% end %>
+          </div>
+          <div class="col-xs-4">
+            <a href="http://208.68.38.122/themes/emerald/dev/htmls/widgets.html#" class="text-normal" data-no-turbolink="true">
+              <i class="fa fa-camera"></i>
+              <div>Photo</div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <% if @task.status == "pending" %>
+      <div class = "row">
+        <div class = "col-xs-12">
+          <div class="chat-box-timeline">
+            <%= image_tag @runner.image_url, :class => "img-responsive img-circle avatar" %>
+            <div class="message">
+              <div class="panel panel-shadow panel-white">
+                <div class="panel-body panel-arrow-left">
+
+                  <div class="chat-box-timeline-title">
+                    <span class="label label-primary-lt">RUNNER</span>
+                    <strong><%=@runner.private_name %>></strong>
+                    <span>is now the runner</span>
+
+                    <div class="pull-right text-semi">
+                      <i class="fa fa-clock-o"></i> <grab this from offer> ago
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+      <div class="col-md-6 col-lg-3">
+        <div class="turbo-card turbo-toggle" data-back-class="bg-info" data-turbo-url="elements/turbocards/body.html">
+          <div class="carousel slide vertical tile-normal" data-ride="carousel">
+            <div class="carousel-inner bg-dark-lt gradient-diag1-inverse">
+              <div class="item active left">
+                <div class="padded">
+                  <h4 class="text-white base-header">Today's Sales</h4>
+                  <h2 class="text-white base-header major">$854</h2>
+                  <h5>13% <i class="fa fa-caret-up"></i> from yesterday</h5>
+                </div>
+                <div class="hpadded">
+                  <div class="easy-pie-chart easy-pie-chart-normal" data-percent="24" data-color="white" data-size="90" data-line-width="8" data-scale-color="false" data-track-color="rgba(255,255,255,0.3)">
+                    <span>24%</span>
+                    <canvas height="180" width="180" style="height: 90px; width: 90px;"></canvas></div>
+                </div>
+              </div>
+
+              <div class="item next left">
+                <div class="padded">
+                  <h5 class="major base-header">Average Price</h5>
+                  <h4>$45</h4>
+
+                  <h5 class="major base-header">Your Price</h5>
+                  <h4>$35 <span class="hpadded"><i class="fa fa-caret-down"></i> 2%</span></h4>
+
+                  <div class="tile-content-bottom-left padded">
+                    <a class="btn btn-sm btn-transparent-light" href="#" data-no-turbolink="true">View All</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+          <div class="col-lg-9 col-md-6">
+            <div class="tile-normal bg-danger gradient-diag1">
+              <div class="panel-heading">
+                <div class="panel-title">Profile Views</div>
+              </div>
+              <div class="panel-body">
+                <table class="table-full push-bottom">
+                  <tbody><tr>
+                    <td>
+                      <h5 class="base-header major">TRACKED</h5>
+                    </td>
+                    <td class="text-right">
+                      <h3 class="base-header text-right">
+                        837
+                      </h3>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h5 class="base-header major">VISITS</h5>
+                    </td>
+                    <td class="text-right">
+                      <h3 class="base-header text-right">
+                        861
+                      </h3>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h5 class="base-header major">CUSTOMERS</h5>
+                    </td>
+                    <td class="text-right">
+                      <h3 class="base-header text-right">
+                        346
+                      </h3>
+                    </td>
+                  </tr>
+                  </tbody></table>
+
+                <div class="progress flat-progress" rel="tooltip" title="60% complete">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                    <span class="sr-only">60% Complete</span>
+                  </div>
+                </div>
+
+                <div class="clearfix">
+                  <h5 class="pull-left base-header major">Today</h5>
+                  <h5 class="base-header major">
+              <span class="pull-right panel-lt box-label">
+                19
+              </span>
+                  </h5>
+                </div>
+              </div>
+            </div>
+
+          <div class="col-sm-7 pull-left-lg no-pull-xs">
+            <div class="panel-heading">
+              <a href="#" class="turbo-toggle badge badge-success-lt badge-rounded badge-empty badge-grow" data-no-turbolink="true"></a>
+              <a href="http://208.68.38.122/themes/emerald/dev/htmls/widgets.html#" class="turbo-toggle badge badge-info-lt badge-rounded badge-empty badge-grow" data-no-turbolink="true"></a>
+              <a href="#" class="turbo-toggle badge badge-primary-lt badge-rounded badge-empty badge-grow" data-no-turbolink="true"></a>
+              <div class="reportrange pull-right">
+                <i class="fa fa-calendar-o"></i>
+                <span>February 13 - March 14</span>
+                <b class="caret"></b>
+              </div>
+            </div>
+
+            <div class="panel-body" style="padding-top: 40px">
+              <div style="height: 150px; padding: 0px; position: relative;" class="flot-transparent-line" data-flot-line-color="success" data-flot-no-lines="" data-flot-no-y-labels=""><canvas class="flot-base" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 297px; height: 150px;" width="594" height="300"></canvas><canvas class="flot-overlay" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 297px; height: 150px;" width="594" height="300"></canvas></div>
+            </div>
+          </div>
+        </div>
+      <div class = "row">
+        <div class = "col-xs-12">
+          <a data-toggle="tab" href="#collapsed" class = "btn btn-success aligncenter "><i class = "fa fa-chevron-up fa-lg"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="collapsed">
+    </div>
+    <% else %>
+    <div class="tab-pane fade active in" id="collapsed">
+    </div>
+    <% end %>
+    <div class="tab-pane fade" id="offers">
+      <div class="row">
+        <div class="col-md-12">
+        <div class="panel panel-default gradient-diag1" id="rid690039f4aa0432318fd14c6e6bd1ea858" style="opacity: 1;">  <div class="panel-heading panel-handle panel-colorize">
+          <div class="panel-title">
+      <span class="panel-title-edtitable editable editable-click" data-type="text">
+        Offers
+      </span>
+          </div>
+        </div>
+        <div class="panel-body-collapse collapse in">
+          <div class="panel-body ">
+
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                <tr class="row-mid">
+                  <th>
+                    <label>
+                      <div class="icheckbox table-checkable" style="position: relative;"><input type="checkbox" rel="icheck" class="table-checkable" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background-color: rgb(255, 255, 255); border: 0px; opacity: 0; cursor: pointer; background-position: initial initial; background-repeat: initial initial;"></ins></div>
+                    </label>
+                  </th>
+
+                  <th>Date</th>
+                  <th>Name</th>
+                  <th>Price</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <% @task.offers.each do |offer| %>
+                <tr class="row-mid">
+                  <td>
+                    <label>
+                      <div class="icheckbox table-checkable-row" style="position: relative;"><input type="checkbox" rel="icheck" class="table-checkable-row" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background-color: rgb(255, 255, 255); border: 0px; opacity: 0; cursor: pointer; background-position: initial initial; background-repeat: initial initial;"></ins></div>
+                    </label>
+                  </td>
+                  <td><%= offer.created_at.strftime("%B %d, %Y") %></td>
+                  <td>
+                    <%= link_to user_path(offer.sender_id) do %>
+                        <%= image_tag(User.find(offer.sender_id).image_url, :class => " img-circle img-icon") %>
+                        <%= User.find(offer.sender_id).private_name %>
+                    <% end %>
+                  </td>
+                  <td class = "text-muted"><%= number_to_currency(offer.wallet_price) %></td>
+                </tr>
+                <% end %>
+                </tbody>
+              </table>
+
+            </div>
+
+
+          </div>
+        </div>
+        </div>
+        </div>
+      </div>
+      <a data-toggle="tab" href="#collapsed" class = "btn btn-success aligncenter"><i class = "fa fa-chevron-up fa-lg"></i></a>
+    </div>
+    <div class="tab-pane fade" id="timeline">
+      <div class="row">
+        <div class="col-md-12">
+
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+              <div class="timeline-top">
+                <div class="panel ">
+                  <div class="panel-heading panel-colorize">
+
+                    <div class="panel-title">
+                      <a href="#" class="v-mid badge badge-danger badge-rounded badge-empty badge-grow" data-no-turbolink="true"></a>
+                      <span class="mid">title</span>
+                    </div>
+
+                    <span class="pull-right text-semi"><i class="fa fa-clock-o"></i> <span><% if @task.created_at.to_date > 7.days.ago %>
+                <%= time_ago_in_words(@task.created_at) %> ago
+            <% else %> <%= @task.created_at.strftime("%B %d") %><%end %></span></span>
+                  </div>
+
+                  <div class="panel-body panel-colorize">
+                    <p><%= @task.subject %></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <ul class="timeline timeline-mid-light-dk timeline-badges-success-lt">
+
+
+            <li class="">
+              <div class="timeline-badge"></div>
+              <div class="panel ">
+                <div class="panel-heading panel-colorize">
+
+                  <div class="panel-title">
+                    <a href="#" class="v-mid badge badge-warning-lt badge-rounded badge-empty badge-grow" data-no-turbolink="true"></a>
+                    <span class="mid">Jared McKenna</span>
+                  </div>
+                  <span class="pull-right text-semi"><i class="icm icm-clock"></i> <span>8m ago</span></span>
+                </div>
+
+                <div class="panel-body panel-colorize">
+                  <p>Veniam ex itaque pariatur doloremque est ut quo consectetur minus alias qui. consequatur sequi ducimus reiciendis. voluptatem quia magnam dolor adipisci quis cum voluptatum aut fugit et modi. et consectetur quibusdam inventore consequatur vel unde ut sed omnis mollitia. quis facilis maiores est vitae ipsa dicta sed quos et. non reiciendis sit distinctio consequuntur quibusdam porro soluta recusandae expedita neque</p>
+                </div>
+
+              </div>
+            </li>
+
+            <li class="timeline-inverted">
+              <div class="timeline-badge"></div>
+              <div class="panel panel-success">
+                <div class="panel-heading panel-colorize">
+
+                  <div class="panel-title">
+                    <a href="#" class="v-mid badge badge-light badge-rounded badge-empty badge-grow" data-no-turbolink="true"></a>
+                    <span class="mid">Colorize options</span>
+                  </div>
+                  <span class="pull-right text-semi"><i class="icm icm-clock"></i> <span>8m ago</span></span>
+                </div>
+
+                <div class="panel-body panel-colorize">
+                  <p>Delectus nihil esse ipsa sit nihil aut voluptas illum voluptas. quo architecto ut eaque hic architecto consequatur ut excepturi sit exercitationem id repudiandae. est nulla odit veniam officiis qui. alias veritatis labore praesentium possimus quis quia autem soluta unde aut laboriosam</p>
+                </div>
+
+              </div>
+            </li>
+
+            <li class="">
+              <div class="timeline-badge"></div>
+              <div class="panel ">
+                <div class="panel-heading panel-colorize">
+
+                  <div class="panel-title">
+                    <a href="#" class="v-mid badge badge-primary-lt badge-rounded badge-empty badge-grow" data-no-turbolink="true"></a>
+                    <span class="mid">Pete Byrne</span>
+                  </div>
+                  <span class="pull-right text-semi"><i class="icm icm-clock"></i> <span>8m ago</span></span>
+                </div>
+
+                <div class="panel-body panel-colorize">
+                  <p>Nulla quae voluptatem a doloribus temporibus suscipit eius aut numquam minus. eum qui aspernatur eaque. eum inventore sed unde alias enim omnis fugiat cum voluptatem. velit hic veritatis occaecati. rerum voluptatem repellendus ipsum aliquam dolore at omnis distinctio eos deserunt fuga</p>
+                </div>
+
+              </div>
+            </li>
+
+            <li class="timeline-inverted">
+              <div class="timeline-badge"></div>
+              <div class="panel ">
+                <div class="panel-heading panel-colorize">
+
+                  <div class="panel-title">
+                    <a href="#" class="v-mid badge badge-info-lt badge-rounded badge-empty badge-grow" data-no-turbolink="true"></a>
+                    <span class="mid">Brendan Li</span>
+                  </div>
+                  <span class="pull-right text-semi"><i class="icm icm-clock"></i> <span>8m ago</span></span>
+                </div>
+
+                <div class="panel-body panel-colorize">
+                  <p>Magnam doloremque itaque doloribus sed quis consequuntur quae dolor velit adipisci. nemo suscipit a natus tempore quos consectetur saepe voluptatem necessitatibus eius ut qui autem. quis voluptatum quibusdam id quis. id repellendus et quidem. eum pariatur perspiciatis ut molestias</p>
+                </div>
+
+              </div>
+            </li>
+
+            <li class="">
+              <div class="timeline-badge"></div>
+              <div class="panel ">
+                <div class="panel-heading panel-colorize">
+
+                  <div class="panel-title">
+                    <a href="#" class="v-mid badge badge-primary-lt badge-rounded badge-empty badge-grow" data-no-turbolink="true"></a>
+                    <span class="mid">Andre Adkins</span>
+                  </div>
+                  <span class="pull-right text-semi"><i class="icm icm-clock"></i> <span>8m ago</span></span>
+                </div>
+
+                <div class="panel-body panel-colorize">
+                  <p>Aliquam veritatis est delectus. quisquam pariatur enim ipsa et nihil dicta et hic aperiam id. optio necessitatibus maiores soluta sit sed ut tempora numquam ea laudantium autem repellat at voluptas. aspernatur ea non et error ex voluptate debitis. totam magnam voluptatem nam maxime. deleniti iste nihil et facere quo est illum quia officiis et ratione et et</p>
+                </div>
+
+              </div>
+            </li>
+
+            <li class="timeline-inverted">
+              <div class="timeline-badge"></div>
+              <div class="panel ">
+                <div class="panel-heading panel-colorize">
+
+                  <div class="panel-title">
+                    <a href="#" class="v-mid badge badge-primary-lt badge-rounded badge-empty badge-grow" data-no-turbolink="true"></a>
+                    <span class="mid">Tammie Jennings</span>
+                  </div>
+                  <span class="pull-right text-semi"><i class="icm icm-clock"></i> <span>8m ago</span></span>
+                </div>
+
+                <div class="panel-body panel-colorize">
+                  <p>Repellat aut aliquid temporibus enim exercitationem porro voluptatem architecto sed laboriosam voluptas. ut maiores optio quos laborum. quod quo maxime rerum dolor sint quibusdam laboriosam quas quo similique est. voluptatum occaecati quaerat beatae in delectus non blanditiis delectus sint in qui ut nobis</p>
+                </div>
+
+              </div>
+            </li>
+
+            <li class="">
+              <div class="timeline-badge"></div>
+              <div class="panel ">
+                <div class="panel-heading panel-colorize">
+
+                  <div class="panel-title">
+                    <a href="#" class="v-mid badge badge-danger-lt badge-rounded badge-empty badge-grow" data-no-turbolink="true"></a>
+                    <span class="mid">Adrianna Gross</span>
+                  </div>
+                  <span class="pull-right text-semi"><i class="icm icm-clock"></i> <span>8m ago</span></span>
+                </div>
+
+                <div class="panel-body panel-colorize">
+                  <p>Id non modi architecto ut ea rerum. ex voluptas veniam voluptate totam voluptatem odio odio ullam consequatur enim recusandae qui earum et. doloremque rerum inventore labore. omnis ex hic animi facilis incidunt rerum doloremque labore consequatur perspiciatis optio. molestiae facilis qui distinctio non voluptatibus non fugit similique error unde aliquid</p>
+                </div>
+
+              </div>
+            </li>
+
+            <li class="clearfix" style="float: none;"></li>
+
+          </ul>
+
+        </div>
+      </div>
+      <a data-toggle="tab" href="#collapsed" class = "btn btn-success aligncenter"><i class = "fa fa-chevron-up fa-lg"></i></a>
+    </div>
+  </div>
+</div>
+<div id="page-content-wrapper">
+<div class="container-fluid">
+<div class = "tx-div small"></div>
+<div class="row ">
+<div class="col-md-8">
+  <div class="panel panel-default gradient-diag1" id="rid690039f4aa0432318fd14c6e6bd1ea856" style="opacity: 1;">  <div class="panel-heading panel-handle panel-colorize">
+    <div class="panel-actions pull-right panel-actions-reveal">
+                        <span class="panel-actions-reveal-hide animated fadeInRight">
+
+                          <span class="panel-action panel-classify">
+                            <select rel="classselector" style="display: none;">
+                              <option>panel-none</option>
+                              <option>panel-default</option>
+                              <option>panel-light</option>
+                              <option>panel-dark</option>
+                              <option>panel-inverse</option>
+                              <option>panel-warning</option>
+                              <option>panel-danger</option>
+                              <option>panel-primary</option>
+                              <option>panel-info</option>
+                              <option>panel-success</option>
+                            </select><div class="dropdown dropdown-classselector">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-no-turbolink="true">
+                              <span class="btn-classselector"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-caret">
+
+                              <li>
+                                <a href="#" class="btn-classselector-class panel-none" data-class="panel-none" data-no-turbolink="true">
+                                  <span class="btn-classselector-class panel-none" data-class="panel-none"></span>
+                                </a>
+                              </li>
+
+                              <li>
+                                <a href="#" class="btn-classselector-class panel-default" data-class="panel-default" data-no-turbolink="true">
+                                  <span class="btn-classselector-class panel-default selected" data-class="panel-default"></span>
+                                </a>
+                              </li>
+
+                              <li>
+                                <a href="#" class="btn-classselector-class panel-light" data-class="panel-light" data-no-turbolink="true">
+                                  <span class="btn-classselector-class panel-light" data-class="panel-light"></span>
+                                </a>
+                              </li>
+
+                              <li>
+                                <a href="#" class="btn-classselector-class panel-dark" data-class="panel-dark" data-no-turbolink="true">
+                                  <span class="btn-classselector-class panel-dark" data-class="panel-dark"></span>
+                                </a>
+                              </li>
+
+                              <li>
+                                <a href="#" class="btn-classselector-class panel-inverse" data-class="panel-inverse" data-no-turbolink="true">
+                                  <span class="btn-classselector-class panel-inverse" data-class="panel-inverse"></span>
+                                </a>
+                              </li>
+
+                              <li>
+                                <a href="#" class="btn-classselector-class panel-warning" data-class="panel-warning" data-no-turbolink="true">
+                                  <span class="btn-classselector-class panel-warning" data-class="panel-warning"></span>
+                                </a>
+                              </li>
+
+                              <li>
+                                <a href="#" class="btn-classselector-class panel-danger" data-class="panel-danger" data-no-turbolink="true">
+                                  <span class="btn-classselector-class panel-danger" data-class="panel-danger"></span>
+                                </a>
+                              </li>
+
+                              <li>
+                                <a href="#" class="btn-classselector-class panel-primary" data-class="panel-primary" data-no-turbolink="true">
+                                  <span class="btn-classselector-class panel-primary" data-class="panel-primary"></span>
+                                </a>
+                              </li>
+
+                              <li>
+                                <a href="#" class="btn-classselector-class panel-info" data-class="panel-info" data-no-turbolink="true">
+                                  <span class="btn-classselector-class panel-info" data-class="panel-info"></span>
+                                </a>
+                              </li>
+
+                              <li>
+                                <a href="#" class="btn-classselector-class panel-success" data-class="panel-success" data-no-turbolink="true">
+                                  <span class="btn-classselector-class panel-success" data-class="panel-success"></span>
+                                </a>
+                              </li>
+
+                            </ul>
+                          </div>
+                          </span>
+                        <span class="panel-action panel-fullscreen">
+                          <i class="fa fa-expand"></i>
+                        </span>
+                        <span class="panel-action panel-collapse">
+                          <i class="fa fa-minus"></i>
+                        </span>
+                        <span class="panel-action panel-close">
+                          <i class="fa fa-times"></i>
+                        </span>``
+                        </span>
+      &nbsp;&nbsp;
+      <i class="fa fa-bars panel-actions-reveal-icon"></i>
+    </div>
+    <div class="panel-title">
+      <span class="panel-title-edtitable editable editable-click" data-type="text" data-original-title="" title="" style="background-color: rgba(0, 0, 0, 0);">Job Details</span>
+    </div>
+  </div>
+    <div class="panel-body-collapse collapse in">
+      <div class="panel-body ">
+
+        <table class="table">
+          <tbody>
+          <tr class="row-mid">
+            <td>
+              <strong>Subject</strong>
+            </td>
+            <td class="text-muted"><%=@task.subject%></td>
+          </tr>
+          <tr class="row-mid">
+            <td>
+              <strong>Description</strong>
+            </td>
+            <td class="text-muted"><%=@task.description%></td>
+          </tr>
+          <tr class="row-mid">
+            <td>
+              <strong>Task Type</strong>
+            </td>
+            <td class="text-muted"> <%= link_to @task.task_type, help_path %>
+            </td>
+          </tr>
+          <tr class="row-mid">
+            <td>
+              <strong>Task Category</strong>
+            </td>
+            <td class="text-muted"><%= link_to @job_category.name, job_category_path(@job_category) %>
+            </td>
+          </tr>
+          <tr class="row-mid">
+            <td>
+              <strong>Tags</strong>
+            </td>
+            <td class="text-muted">
+              <% if @task.tags.any? %>
+                  <%= raw @task.tag_list.map{ |t| link_to t, tag_path(t), class: "tag tag-black"}.join(' ')%>
+              <% end %>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <%= render 'autotaskinfo' if @task.task_type == "auto"%>
+  <%= render 'dobutton' %>
+  <div class = "m-t-50"></div>
+</div>
+<div class="col-md-4">
+  <div class="block widget-notes">
+    <div class="header dark"><h4>To Do List</h4></div>
+    <ol type = "2" class = "paper">
+      <% @task.todoitems.each do |todoitem| %>
+          <li><%= todoitem.body %></li>
+      <% end %>
+    </ol>
+  </div>
+  <div class = "m-t-20"></div>
+  <a href ="#" class = "btn btn-block btn-facebook"><i class = "fa fa-lg fa-facebook pull-left"></i><span class = "text-center">Post Job to Facebook</span></a>
+  <div class = "m-t-20"></div>
+  <a href ="#" class = "btn btn-block btn-twitter"><i class = "fa fa-lg fa-twitter pull-left"></i><span class = "text-center">Post Job to Twitter</span></a>
+  <div class = "m-t-20"></div>
+  <a href ="#" class = "btn btn-block btn-linkedin"><i class = "fa fa-lg fa-linkedin pull-left"></i><span class = "text-center">Post Job to Linked In</span></a>
+  <div class = "m-t-20"></div>
+  <a href="mailto:enteryour@addresshere.com?subject='Check out this job I found!'&amp;body=Check%20this%20out:%20'http://honeydew.com<%=task_path(@task)%>'" class = "btn btn-block btn-success"><i class = "fa fa-lg fa-envelope-o pull-left"></i><span class = "text-center">Email Job</span></a>
+  <div class = "m-t-50"></div>
+  <div class = "row">
+    <i class = "fa fa-lg fa-globe"></i><strong> Link to this job</strong>
+    </br>
+    </br>
+    <p class = "text-muted">Share this job with a friend. Just copy link below and share by any means.</p>
+    <div class="input-group">
+      <div class="form-control">http://www.honeydew.com<%= task_path(@task) %></div>
+      <a class="input-group-addon btn-info">Copy</a>
+    </div>
+    <div class = "m-t-50"></div>
+  </div>
+</div>
+</div>
+</div>
+</div>
 </div>
 
 <!-- Modals -->
@@ -315,6 +676,10 @@
 
 <!-- Modals -->
 
+
+
 <script>
     $("#input-1").rating({'showCaption':true, 'stars':'5', 'min':'0', 'max':'5', 'step':'1', 'size':'sm', 'starCaptions': {1:'Wont Recommend', 2:'OK', 3:'Good', 4:'Recommend', 5:'Highly Recommend'}});
 </script>
+
+

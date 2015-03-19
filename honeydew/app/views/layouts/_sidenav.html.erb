@@ -2,6 +2,19 @@
 <!-- nav -->
 <nav class="nav-sidebar">
   <ul class="nav">
+
+
+    <div class="avatar-link btn-group btn-group-justified">
+      <a class="btn" href="profile.html" title="Portfolio"><i class="fa fa-lg fa-briefcase"></i></a>
+      <a class="btn" data-toggle="modal" href="#md-notification" title="Notification">
+        <i class="fa fa-lg fa-bell-o"></i><em class="active"></em>
+      </a>
+      <a class="btn" data-toggle="modal" href="#md-messages" title="Messages">
+        <i class="fa fa-lg fa-envelope-o"></i><em class="active"></em>
+      </a>
+      <a class="btn" href="#menu-right" title="Contact List"><i class="fa fa-lg fa-book"></i></a>
+    </div>
+
     <li class="dropdown active">
       <a href="#dropdownUserSidebar" class="collapsed"  data-toggle="collapse" data-parent="#collapseAvatarLeft">
         <div class="media">
@@ -36,7 +49,7 @@
       </ul>
     </li>
     <li>
-      <%= link_to myriorunner_path(current_user.id) do %>
+      <%= link_to myriorunner_path do %>
           <i class="fa fa-dashboard icon">
             <b class="bg-warning"></b>
           </i>

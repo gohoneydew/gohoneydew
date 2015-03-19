@@ -1,0 +1,23 @@
+<% if current_user.id != @task.wallet_id %>
+    <% if @task.status == 'open' %>
+        <% if @task.task_type == "auto" %>
+            <% if @task.average_rating(current_user) >= @task.rating_required %>
+                <a href = "#" data-toggle ="modal" data-target = "#taskacceptance" class = "btn btn-block btn-success">This Task Is For Me</a>
+            <% else %>
+                <a href="javascript:;" class="btn btn-danger btn-block disabled">Your rating doesn't allow this task</a>
+            <% end %>
+        <% elsif @task.task_type == "bid" %>
+            <a href = "#" data-toggle ="modal" data-target = "#makeoffer" class = "btn btn-success btn-block">Bid on this task</a>
+        <% end %>
+    <% elsif @task.status == 'pending' %>
+        <a class = "btn btn-block btn-danger-dk">This task is pending, do something here</a>
+    <% elsif @task.status == 'closed' %>
+        <%= link_to "Write Review", "", :class => "btn btn-block btn-inverse", :data => {:toggle => "modal", :target => "#review"} %>
+    <% end %>
+<% else %>
+    <% if @task.status == 'pending' %>
+    <a class = "btn btn-block btn-danger-dk">This task is pending, do something here</a>
+    <% elsif @task.status == 'closed' %>
+    <%= link_to "Write Review", "", :class => "btn btn-block btn-inverse", :data => {:toggle => "modal", :target => "#review"} unless @task.final_rating.present?%>
+    <% end %>
+<% end %>

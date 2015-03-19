@@ -1,16 +1,299 @@
-
+<div class="em-job-background-box jobheader">
+<%= image_tag("gardening.jpeg", :class => "image-header")  %>
 <div id="page-content-wrapper">
-  <div class="container-fluid">
-    <div class="row m-t-50">
-      <li>
-        <%= link_to "Write Review", "", :class => "btn btn-sm btn-transparent-light", :data => {:toggle => "modal", :target => "#review"} %>
-      </li>
-      <input id="input-1" class="rating" data-min="0" data-max="5" data-step="1">
-
+<div class="container-fluid">
+<div class="row">
+  <ol class="breadcrumb pull-right ">
+    <li><%= link_to "All Jobs", job_categories_path %></li>
+    <li><%= link_to "Sample Job Category", root_path %></li>
+  </ol>
 </div>
+  <div class="row">
+    <div class="col-md-6">
+        <h1 class = "headertext">I urgently need a dog sitter</h1>
+        <h5 class = "text-white-opaque"><i class = "fa fa-map-marker fa-lg"></i> 87112, Albuquerque, NM</h5>
+        <h5 class = "text-white-opaque">Posted on 4/5/12 by <%= image_tag(current_user.image_url , :class => "img-circle img-icon") %>
+          <%=link_to current_user.private_name, user_path(current_user) %> (Owner)</h5>
+          <a href = "#" data-toggle ="modal" data-target = "#messaging" class = "text-white"><i class="fa fa-pencil fa-lg"></i> Contact Wallet?</a>
+    </div>
+    <div class="col-md-3 pull-right">
+      <a href="#" title="Share on Facebook" rel="tooltip" class = "btn-rounded">
+        <i class="fa fa-circle text-success "></i> Open
+      </a>
+      <a href="#" title="Views" rel="tooltip" class = "btn-rounded">
+        <i class="fa fa-eye fa-lg "></i> 87
+      </a>
+        <a href="mailto:enteryour@addresshere.com?subject='Bjorn%20Tee%20SS%20Jack%20%26%23038%3B%20Jones'&amp;body=Check%20this%20out:%20'http://tabaclothing.com/product/bjorn-tee-ss-jack-jones/'" title="Email Job" rel="tooltip" class = "btn-round">
+          <i class="fa fa-envelope-o fa-lg  email"></i>
+        </a>
+        <a href="#" title="Share on LinkedIn" rel="tooltip" class = "btn-round">
+          <i class="fa fa-bookmark fa-lg"></i>
+        </a>
+    </div>
+  </div>
+  </div>
+  </div>
+</div>
+    <div class="panel panel-success bg-opaque" id="rid3d271956147df2ebd2ebe7c8be0f95553">
+      <div class="panel-header panel-handle panel-colorize">
+        <ul class="nav nav-justified-all ">
+          <li class="">
+            <a data-toggle="tab" href="#summary">Summary</a>
+          </li>
+          <li class="">
+            <a data-toggle="tab" href="#tab2">Offers</a>
+          </li>
+          <li class="">
+            <a data-toggle="tab" href="#tab3">Timeline</a>
+          </li>
+          <li class="">
+            <a data-toggle="tab" href="#tab3">Photos</a>
+          </li>
+          <li class="">
+            <a data-toggle="tab" href="#tab3">To Do List</a>
+          </li>
+          <li class="">
+            <a data-toggle="tab" href="#tab3">Map</a>
+          </li>
+        </ul>
+      </div>
+      <div class="panel-body-collapse collapse in">
+        <div class="panel-body tab-content">
+          <div class="tab-pane fade" id="summary">
+            <h4>
+              A nav that stays the same (justified) on all devices.
+            </h4>
+            <p>Aut molestiae pariatur culpa. culpa nemo et voluptate quia voluptatem quo voluptates temporibus maxime qui deleniti aspernatur modi. eum cupiditate quam et eum reiciendis facere esse dolore aut et aut ex ratione in. nihil et unde architecto. animi facere et eligendi. non asperiores laborum sunt minus blanditiis enim dicta labore est modi necessitatibus recusandae. aut asperiores explicabo omnis adipisci</p>
+            <a data-toggle="tab" href="#collapsed" class = "btn btn-success aligncenter "><i class = "fa fa-chevron-up fa-lg"></i></a>
+          </div>
+          <div class="tab-pane fade" id="tab2">
+            <p>Adipisci qui asperiores voluptatem aliquid. sapiente consequatur facilis quam. numquam quia soluta facilis recusandae qui similique numquam optio est. quaerat at facilis est voluptatem nulla ex quam</p>
+            <p>Quia mollitia est vel totam placeat quis sequi. reprehenderit possimus et ipsam. et corporis ut consequuntur nihil culpa repellat et assumenda. totam et nulla dolorum vel molestiae hic voluptas labore voluptatem veritatis id non. quam ut nostrum iusto sed odio quam laudantium voluptates fuga magnam quaerat facilis rem</p>
+            <a data-toggle="tab" href="#collapsed" class = "btn btn-success aligncenter"><i class = "fa fa-chevron-up fa-lg"></i></a>
+          </div>
+          <div class="tab-pane fade" id="tab3">
+            <p>Ratione explicabo neque enim nulla laudantium unde doloremque rerum reiciendis eaque architecto quis doloremque explicabo. sint voluptatem eveniet soluta labore reiciendis tempora qui sequi assumenda incidunt temporibus. quia sunt quam dolorem perspiciatis molestias laudantium et ea et dicta. delectus dolores animi ut voluptas tenetur sunt fuga soluta quas ex qui</p>
+            <p>Asperiores provident ut omnis amet eum sequi sint ex est voluptatem suscipit. sed praesentium ut quibusdam aut exercitationem distinctio sed consectetur. dolorum culpa nulla exercitationem molestiae accusantium et eos. consequatur unde libero quam ad aut cum. delectus facere rerum omnis vero voluptatem sit consequatur rerum saepe ad quod</p>
+            <a data-toggle="tab" href="#collapsed" class = "btn btn-success aligncenter"><i class = "fa fa-chevron-up fa-lg"></i></a>
+          </div>
+          <div class="tab-pane fade active in" id="collapsed">
+          </div>
+        </div>
+      </div>
+      <div id="page-content-wrapper">
+        <div class="container-fluid">
+                <div class = "tx-div small"></div>
+                <div class="row ">
+                  <div class="col-md-8">
+                    <div class="panel panel-default gradient-diag1" id="rid690039f4aa0432318fd14c6e6bd1ea856" style="opacity: 1;">  <div class="panel-heading panel-handle panel-colorize">
+                      <div class="panel-actions pull-right panel-actions-reveal">
+                        <span class="panel-actions-reveal-hide animated fadeInRight">
+
+                          <span class="panel-action panel-classify">
+                            <select rel="classselector" style="display: none;">
+                              <option>panel-none</option>
+                              <option>panel-default</option>
+                              <option>panel-light</option>
+                              <option>panel-dark</option>
+                              <option>panel-inverse</option>
+                              <option>panel-warning</option>
+                              <option>panel-danger</option>
+                              <option>panel-primary</option>
+                              <option>panel-info</option>
+                              <option>panel-success</option>
+                            </select><div class="dropdown dropdown-classselector">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-no-turbolink="true">
+                              <span class="btn-classselector"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-caret">
+
+                              <li>
+                                <a href="#" class="btn-classselector-class panel-none" data-class="panel-none" data-no-turbolink="true">
+                                  <span class="btn-classselector-class panel-none" data-class="panel-none"></span>
+                                </a>
+                              </li>
+
+                              <li>
+                                <a href="#" class="btn-classselector-class panel-default" data-class="panel-default" data-no-turbolink="true">
+                                  <span class="btn-classselector-class panel-default selected" data-class="panel-default"></span>
+                                </a>
+                              </li>
+
+                              <li>
+                                <a href="#" class="btn-classselector-class panel-light" data-class="panel-light" data-no-turbolink="true">
+                                  <span class="btn-classselector-class panel-light" data-class="panel-light"></span>
+                                </a>
+                              </li>
+
+                              <li>
+                                <a href="#" class="btn-classselector-class panel-dark" data-class="panel-dark" data-no-turbolink="true">
+                                  <span class="btn-classselector-class panel-dark" data-class="panel-dark"></span>
+                                </a>
+                              </li>
+
+                              <li>
+                                <a href="#" class="btn-classselector-class panel-inverse" data-class="panel-inverse" data-no-turbolink="true">
+                                  <span class="btn-classselector-class panel-inverse" data-class="panel-inverse"></span>
+                                </a>
+                              </li>
+
+                              <li>
+                                <a href="#" class="btn-classselector-class panel-warning" data-class="panel-warning" data-no-turbolink="true">
+                                  <span class="btn-classselector-class panel-warning" data-class="panel-warning"></span>
+                                </a>
+                              </li>
+
+                              <li>
+                                <a href="#" class="btn-classselector-class panel-danger" data-class="panel-danger" data-no-turbolink="true">
+                                  <span class="btn-classselector-class panel-danger" data-class="panel-danger"></span>
+                                </a>
+                              </li>
+
+                              <li>
+                                <a href="#" class="btn-classselector-class panel-primary" data-class="panel-primary" data-no-turbolink="true">
+                                  <span class="btn-classselector-class panel-primary" data-class="panel-primary"></span>
+                                </a>
+                              </li>
+
+                              <li>
+                                <a href="#" class="btn-classselector-class panel-info" data-class="panel-info" data-no-turbolink="true">
+                                  <span class="btn-classselector-class panel-info" data-class="panel-info"></span>
+                                </a>
+                              </li>
+
+                              <li>
+                                <a href="#" class="btn-classselector-class panel-success" data-class="panel-success" data-no-turbolink="true">
+                                  <span class="btn-classselector-class panel-success" data-class="panel-success"></span>
+                                </a>
+                              </li>
+
+                            </ul>
+                          </div>
+                          </span>
+                        <span class="panel-action panel-fullscreen">
+                          <i class="fa fa-expand"></i>
+                        </span>
+                        <span class="panel-action panel-collapse">
+                          <i class="fa fa-minus"></i>
+                        </span>
+                        <span class="panel-action panel-close">
+                          <i class="fa fa-times"></i>
+                        </span>``
+                        </span>
+                        &nbsp;&nbsp;
+                        <i class="fa fa-bars panel-actions-reveal-icon"></i>
+                      </div>
+                      <div class="panel-title">
+                        <span class="panel-title-edtitable editable editable-click" data-type="text" data-original-title="" title="" style="background-color: rgba(0, 0, 0, 0);">Job Details</span>
+                      </div>
+                    </div>
+                      <div class="panel-body-collapse collapse in">
+                        <div class="panel-body ">
+
+                          <table class="table table-hover">
+                            <tbody>
+                            <tr class="row-mid">
+                              <td>
+                                <strong>Subject</strong>
+                              </td>
+                              <td class="text-muted">I urgently need a dog sitter</td>
+                            </tr>
+                            <tr class="row-mid">
+                              <td>
+                                <strong>Description</strong>
+                              </td>
+                              <td class="text-muted">I urgently need a dog sitter, I urgently need a dog sitter. I urgently need a dog sitter. I urgently need a dog sitter,I urgently need a dog sitter,I urgently need a dog sitter.</td>
+                            </tr>
+                            <tr class="row-mid">
+                              <td>
+                                <strong>Task Type</strong>
+                              </td>
+                              <td class="text-muted">Bid</td>
+                            </tr>
+                            <tr class="row-mid">
+                              <td>
+                                <strong>Task Category</strong>
+                              </td>
+                              <td class="text-muted">Animals</td>
+                            </tr>
+                            <tr class="row-mid">
+                              <td>
+                                <strong>Tags</strong>
+                              </td>
+                              <td class="text-muted">tag 1, tag 2, tag 3</td>
+                            </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <div class = "row">
+                      <div class = "col-md-12">
+                        <div class = "tx-div small"></div>
+                        <div class = "col-md-3">
+                          <h1 class = "price ">$31.05</h1>
+                        </div>
+                        <div class = "col-md-9">
+                          This is going to go into a helper
+                          <h4 class = "text-black">Rating Required:</h4>
+                          <div class="progress">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                              <span class="text-black-dk">5/5</span>
+                            </div>
+                          </div>
+                          <h4 class = "text-black">Your Rating:</h4>
+                          <div class="progress">
+                            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                              <span class="text-black-dk">3/5</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+            <a class = "btn btn-block btn-danger">This needs to go into a helper</a>
+                    <div class = "m-t-50"></div>
+      </div>
+      <div class="col-md-4">
+        <div class="block widget-notes">
+          <div class="header dark"><h4>To Do List</h4></div>
+              <ol type = "2" class = "paper">
+                <li>clean dishes</li>
+                <li>clean dishes</li>
+                <li>clean dishes</li>
+                <li>clean dishes</li>
+                <li>clean dishes</li>
+              <li><s>meeting at 4 pm.</s></li>
+              <li><s>Buy some coffee.</s></li>
+            </ol>
+        </div>
+        <div class = "m-t-20"></div>
+        <a href ="#" class = "btn btn-block btn-facebook"><i class = "fa fa-lg fa-facebook pull-left"></i><span class = "text-center">Post Job to Facebook</span></a>
+        <div class = "m-t-20"></div>
+        <a href ="#" class = "btn btn-block btn-twitter"><i class = "fa fa-lg fa-twitter pull-left"></i><span class = "text-center">Post Job to Twitter</span></a>
+        <div class = "m-t-20"></div>
+        <a href ="#" class = "btn btn-block btn-linkedin"><i class = "fa fa-lg fa-linkedin pull-left"></i><span class = "text-center">Post Job to Linked In</span></a>
+        <div class = "m-t-20"></div>
+        <a href="mailto:enteryour@addresshere.com?subject='Bjorn%20Tee%20SS%20Jack%20%26%23038%3B%20Jones'&amp;body=Check%20this%20out:%20'http://tabaclothing.com/product/bjorn-tee-ss-jack-jones/'" class = "btn btn-block btn-success"><i class = "fa fa-lg fa-envelope-o pull-left"></i><span class = "text-center">Email Job</span></a>
+        <div class = "m-t-50"></div>
+        <div class = "row">
+            <i class = "fa fa-lg fa-globe"></i><strong> Link to this job</strong>
+          </br>
+          </br>
+          <p class = "text-muted">Share this job with a friend. Just copy link below and share by any means.</p>
+          <div class="input-group">
+              <div class="form-control">http://www.google.com/jobs/219038210</div>
+              <a class="input-group-addon btn-info">Copy</a>
+          </div>
+          <div class = "m-t-50"></div>
+        </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
 
 
-<%= render 'review_modal' %>
+
 <script>
     $("#input-1").rating({'showCaption':true, 'stars':'5', 'min':'0', 'max':'5', 'step':'1', 'size':'sm', 'starCaptions': {1:'Wont Recommend', 2:'OK', 3:'Good', 4:'Recommend', 5:'Highly Recommend'}});
 </script>

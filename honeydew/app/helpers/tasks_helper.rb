@@ -29,5 +29,32 @@ module TasksHelper
         task.wallet_id
     end
   end
+  def task_price(wallet,price)
+    if wallet.id == current_user.id
+      '$' +  number_with_precision(price, :precision => 2)
+    else
+      '$' +  number_with_precision(price * 0.85, :precision => 2)
+    end
+  end
+
+  def rating_percentage(rating_required)
+    (rating_required.to_f / 5) * 100
+  end
+  def task_status(status)
+    if status == "open"
+      'text-success'
+    elsif status == "pending"
+      'text-warning'
+    elsif status == "closed"
+      'text-danger'
+    end
+  end
+  def ratingColor(task)
+    if task.rating_required <= task.average_rating(current_user)
+      'progress-bar-success'
+    else
+      'progress-bar-danger'
+    end
+  end
 
 end

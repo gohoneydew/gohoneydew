@@ -1,0 +1,23 @@
+<div class = "row">
+  <div class = "col-md-12">
+    <div class = "tx-div small"></div>
+    <div class = "col-md-3">
+      <h1 class = "price "><%=task_price(@wallet, @task.price) %></h1>
+    </div>
+    <div class = "col-md-9">
+      This is going to go into a helper
+      <h4 class = "text-black">Rating Required:</h4>
+      <div class="progress">
+        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: <%=rating_percentage(@task.rating_required)%>%">
+          <span class="text-black-dk"><%=@task.rating_required %>/5</span>
+        </div>
+      </div>
+      <h4 class = "text-black">Your Rating:</h4>
+      <div class="progress">
+        <div class="progress-bar <%=ratingColor(@task) %>" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: <%=rating_percentage(@task.average_rating(current_user)) %>%">
+          <span class="text-black-dk"><%=@task.average_rating(current_user)%>/5</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -54,11 +54,7 @@
                             to
 
                             <%= link_to user_path(@user.id) do %>
-                                <% if @recipient.image_url.present? %>
                                     <%= image_tag(@recipient.image_url, :class => " img-circle img-icon") %>
-                                <% else %>
-                                    <%= image_tag('avatar.jpg', :class => " img-circle img-icon") %>
-                                <% end %>
                                 <strong>&nbsp;<%= @recipient.first_name%>&nbsp;<%= @recipient.last_initial %></strong>
                             <% end %>
                           </h4>

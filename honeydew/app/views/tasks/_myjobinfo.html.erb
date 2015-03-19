@@ -1,0 +1,156 @@
+<section>
+  <div class="tabs tabs-style-bar">
+    <nav>
+      <ul>
+        <li class=" active"><a href="#home" role ="tab" data-toggle="tab" class="fa fa-lg fa-home"><span class = "hidden-sm hidden-xs">Job</span></a></li>
+        <li><%= link_to "", :class => "fa fa-lg fa-comment-o", :data => {:toggle => "modal", :target => "#chat"} do %>
+              <span class = "hidden-sm hidden-xs">Chat</span>
+          <% end %>
+        </li>
+        <li><a href="#" class="fa fa-lg fa-desktop" data-toggle ="modal" data-target = "#offers"><span class = "hidden-sm hidden-xs">Offers</span></a></li>
+        <% if @task.status == "pending" || @task.status == "closed" %>
+            <li><a href="#upload" class="fa fa-lg fa-upload" data-toggle = "tab"><span class = "hidden-sm hidden-xs">Accepted Task</span></a></li>
+        <% end %>
+        <li><a href="#settings" class="fa fa-lg fa-cog" data-toggle = "tab"><span class = "hidden-sm hidden-xs">Settings</span></a></li>
+      </ul>
+    </nav>
+  </div><!-- /tabs -->
+</section>
+
+<div class="row userdata">
+  <div class="col-xs-10 col-xs-offset-1">
+    <div class=" tab-content">
+      <div role="tabpanel" class="tab-pane active" id="home"></div>
+      <% if @task.status == "pending" || @task.status == "closed" %>
+          <div role="tabpanel" class="tab-pane" id="upload">
+            <div class = "row semi-well-lt em-background-box-actions">
+              <div class = "col-xs-6">
+                <ul class="list-inline no-margin v-mid-row">
+                  <li>
+                    <%= link_to @task, :rel => "tooltip", :title => 'Delete Task', :method => :delete, :data => {:confirm => "Are you sure?"} do %>
+                        <i class="fa fa-trash-o fa-lg">&nbsp;</i>
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to edit_task_path(@task), :rel => "tooltip", :title => 'Edit Task' do %>
+                        <i class="fa fa-pencil fa-lg">&nbsp;</i>
+                    <% end %>
+                  </li>
+                  <li class="hidden-xs">
+                    <a href="#" rel="tooltip" title="Clint Chung">
+                      <img class="img-circle" src="../../images/faker/avatars/48/Faces_Users-20.png" />
+                    </a>
+                  </li>
+                  <li class="hidden-xs">
+                    <a href="#" rel="tooltip" title="Emma Morgan">
+                      <img class="img-circle" src="../../images/faker/avatars/48/Faces_Users-23.png" />
+                    </a>
+                  </li>
+                  <li class="text-center">
+                    <h5 class="base-header">Followers</h5>
+                    <h4 class="base-header major">4.884</h4>
+                  </li>
+                  <% if @task.status == 'pending' %>
+                      <li>
+                        <%= link_to "Job is complete", taskcompletion_path(@task), :class => "btn btn-sm btn-transparent-light" %>
+                      </li>
+                  <% elsif @task.status == 'closed' %>
+                      <% if @task.review.present? %>
+                          Review already written, nothing else to see here
+                      <% else %>
+                          <li>
+                            <%= link_to "Write Review", "", :class => "btn btn-sm btn-transparent-light", :data => {:toggle => "modal", :target => "#review"} %>
+                          </li>
+                      <% end %>
+                  <% end %>
+
+
+                </ul>
+              </div>
+              <div class = "col-xs-6">
+                <div class = "pull-right">
+                  <ul class="list-inline no-margin v-mid-row">
+                    <li style="width: 80px; height: 30px;">
+                      <div class="sparkline-bar" data-color="danger-lt"><!--15,16,4,11,7,12,19,23,13--></div>
+                    </li>
+                    <li class="text-center">
+                      <h5 class="base-header">Runner</h5>
+                      <h4 class="base-header major">
+                        <%= image_tag(@runner.image_url , :class => "img-circle img-icon") %>
+                        <%=link_to @runner.private_name, user_path(@runner) %>
+                      </h4>
+                    </li>
+
+                    <li style="width: 80px; height: 30px;">
+                      <div class="sparkline-bar" data-color="success-lt"><!--12,11,19,16,15,4,13,23,7--></div>
+                    </li>
+                    <li class="text-center">
+                      <h5 class="base-header">Views</h5>
+                      <h4 class="base-header major"><%= @task.viewcalc %></h4>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+      <% end %>
+      <div role="tabpanel" class="tab-pane" id="settings">
+        <div class = "row semi-well-lt em-background-box-actions">
+          <div class = "col-xs-6">
+            <ul class="list-inline no-margin v-mid-row">
+              <li>
+                <%= link_to @task, :rel => "tooltip", :title => 'Delete Task', :method => :delete, :data => {:confirm => "Are you sure?"} do %>
+                    <i class="fa fa-trash-o fa-lg">&nbsp;</i>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to edit_task_path(@task), :rel => "tooltip", :title => 'Edit Task' do %>
+                    <i class="fa fa-pencil fa-lg">&nbsp;</i>
+                <% end %>
+              </li>
+              <li class="hidden-xs">
+                <a href="#" rel="tooltip" title="Clint Chung">
+                  <img class="img-circle" src="../../images/faker/avatars/48/Faces_Users-20.png" />
+                </a>
+              </li>
+              <li class="hidden-xs">
+                <a href="#" rel="tooltip" title="Emma Morgan">
+                  <img class="img-circle" src="../../images/faker/avatars/48/Faces_Users-23.png" />
+                </a>
+              </li>
+              <li class="text-center">
+                <h5 class="base-header">Followers</h5>
+                <h4 class="base-header major">4.884</h4>
+              </li>
+              <li>
+                <a class="btn btn-sm btn-transparent-light" href="#">View All</a>
+              </li>
+            </ul>
+          </div>
+          <div class = "col-xs-6">
+            <div class = "pull-right">
+              <ul class="list-inline no-margin v-mid-row">
+                <li style="width: 80px; height: 30px;">
+                  <div class="sparkline-bar" data-color="danger-lt"><!--15,16,4,11,7,12,19,23,13--></div>
+                </li>
+                <li class="text-center">
+                  <h5 class="base-header">Average Price</h5>
+                  <h4 class="base-header major">$30.593</h4>
+                </li>
+
+                <li style="width: 80px; height: 30px;">
+                  <div class="sparkline-bar" data-color="success-lt"><!--12,11,19,16,15,4,13,23,7--></div>
+                </li>
+                <li class="text-center">
+                  <h5 class="base-header">Views</h5>
+                  <h4 class="base-header major"><%= @task.viewcalc %></h4>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="info">haha</div>
+    </div>
+  </div>
+</div>
