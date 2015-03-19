@@ -58,7 +58,7 @@ class User < ActiveRecord::Base
     self.email = omniauth['info']['email'] if email.blank?
     self.first_name = omniauth['info']['first_name'] if first_name.blank?
     self.last_name = omniauth['info']['last_name'] if last_name.blank?
-    self.image_url = omniauth['info']['image']
+    self.image_url = omniauth['info']['image'] if image_url.blank? || image_url == "/assets/avatar.jpg"
     self.username = omniauth['info']['nickname'] if username.blank?
   end
 end

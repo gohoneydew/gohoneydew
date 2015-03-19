@@ -83,9 +83,9 @@ Rails.application.configure do
   config.paperclip_defaults = {
       :storage => :s3,
       :s3_credentials => {
-          :bucket => ENV['riorunner'],
-          :access_key_id => ENV['AKIAIYFSMIESFE7CQUYA'],
-          :secret_access_key => ENV['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']
+          :bucket => ENV['honeydewbeta'],
+          :access_key_id => ENV['AKIAIIDOGXFJ5FSHM4DA'],
+          :secret_access_key => ENV['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']
       }
   }
 
