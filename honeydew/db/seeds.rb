@@ -5,3 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+JobCategory.create!(:name => "Dog Walking", :user_generated => false)
+JobCategory.create!(:name => "Animals", :user_generated => false)
+JobCategory.create!(:name => "Indoor - Home", :user_generated => false)
+JobCategory.create!(:name => "Outdoor - Home", :user_generated => false)
+JobCategory.create!(:name => "Food", :user_generated => false)
+JobCategory.create!(:name => "Technical", :user_generated => false)
+JobCategory.create!(:name => "Automobile", :user_generated => false)
+JobCategory.create!(:name => "Babysitting", :user_generated => false)
+JobCategory.create!(:name => "Cleaning", :user_generated => false)
+
