@@ -29,7 +29,6 @@
  *= require icomoon
 
 */
-@import "bootstrap-sprockets";
 
 .pace-running .s3-loader{
     zoom:1;
@@ -69,7 +68,6 @@
 /*Tagging in Taskindex */
 .tag_cloud{
 position: absolute;
-background-color: rgba(255,255,255,.7);
 }
 .tag {
     width: 1.5em;
@@ -175,9 +173,9 @@ input:focus {
     }
 }
 
-//ending style for natural language forms
+/*ending style for natural language forms */
 
-//Pagination
+/* Pagination */
 
   .rr_pagination {
       text-align: center;
@@ -1683,16 +1681,6 @@ border-right: 1px solid #ffffff;
     margin: 0;
 }
 /* Job Category Grid */
-@font-face {
-    font-family: 'anyoldicon';
-    src:url('anyoldicon/anyoldicon.eot');
-    src:url(asset-path('anyoldicon/anyoldicon.eot?#iefix')) format('embedded-opentype'),
-    url(asset-path('anyoldicon/anyoldicon.woff')) format('woff'),
-    url(asset-path('anyoldicon/anyoldicon.ttf')) format('truetype'),
-    url(asset-path('anyoldicon/anyoldicon.svg#anyoldicon')) format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
 
 .cbp-ig-grid:before,
 .cbp-ig-grid:after {
@@ -1838,7 +1826,7 @@ border-right: 1px solid #ffffff;
 }
 
 .loginbackground{
-    background: url('bg2blur.png.jpg') no-repeat center center fixed;
+    background: url('bg2blur.png') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
