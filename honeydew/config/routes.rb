@@ -75,7 +75,7 @@ Rails.application.routes.draw do
   get '/myoffers/:id', :to => 'offers#my_offers', as: 'myoffers'
   get '/taskchat/:id', :to => 'tasks#task_chat', as: 'taskchat'
   get '/mychats/:id', :to => 'messages#my_chats', as: 'mychats'
-
+  post 'subscriptions/subscribe' => 'subscriptions#subscribe'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

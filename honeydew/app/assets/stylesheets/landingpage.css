@@ -225,6 +225,61 @@ h4 {
 .navbar {
     display:none
 }
+.ns-box {
+    position: fixed;
+    background: rgb(42,45,50);
+    padding: 22px;
+    line-height: 1.4;
+    z-index: 1000;
+    width:70px;
+    pointer-events: none;
+    color: rgba(250,251,255,0.95);
+    font-size: 90%;
+    font-family: 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
+    top:0px;
+    left:0px;
+    z-index: 99999;
+}
+.ns-effect-thumbslider.ns-hide .ns-content {
+    -webkit-animation-direction: reverse;
+    animation-direction: reverse;
+    -webkit-animation-delay: 0.3s;
+    animation-delay: 0.3s;
+}
+.ns-effect-thumbslider.ns-show .ns-content, .ns-effect-thumbslider.ns-hide .ns-content {
+    -webkit-animation-name: animSlide;
+    animation-name: animSlide;
+    -webkit-animation-duration: 0.4s;
+    animation-duration: 0.4s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-timing-function: cubic-bezier(0.7,0,0.3,1);
+    animation-timing-function: cubic-bezier(0.7,0,0.3,1);
+}
+.ns-content {
+    background: rgba(255,255,255,.98);
+    color: #727275;
+    font-weight: bold;
+    padding-right: 20px;
+    padding-top:5px;
+    height: 64px;
+    line-height: 60px;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index: 9999999;
+    text-align: center;
+    -webkit-box-shadow: 0px 10px 24px -8px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 10px 24px -8px rgba(0,0,0,0.75);
+    box-shadow: 0px 10px 24px -8px rgba(0,0,0,0.75);
+}
+.ns-box-alert{
+    background: #DB443B;
+}
+.ns-box-notice{
+    background: #44885E;
+}
 .landinglogo{
     max-height:150px;
     max-width:150px;
@@ -232,6 +287,7 @@ h4 {
 .rw-wrapper{
     width:80%;
     position: relative;
+    padding-bottom:60px;
 }
 .rw-sentence{
     margin: 0;

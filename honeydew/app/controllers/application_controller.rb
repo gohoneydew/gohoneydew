@@ -53,6 +53,8 @@ class ApplicationController < ActionController::Base
       u.permit(:first_name, :last_name, :username, :email, :password, :password_confirmation, :avatar, :phone, :about_me, :current_password)
     end
   end
+
+
 end
 
 
