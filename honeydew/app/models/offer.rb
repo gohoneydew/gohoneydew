@@ -11,7 +11,7 @@ class Offer < ActiveRecord::Base
 
 
   def wallet_price
-    self.proposed_price * 1.15
+    self.proposed_price * 1.20
   end
 
   def runner_price

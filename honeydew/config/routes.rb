@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   get '/contact', :to => 'pages#contact'
   get '/playground', :to => 'pages#playground'
   get '/home2', :to => 'pages#home2'
+  get '/betainformation', :to => 'pages#betainformation'
   get '/fontawesome', :to => 'pages#fontawesomeoptions'
   get '/iconinformation', :to => 'pages#iconinformation'
   get '/addcreditcardinfo', :to => 'users#add_credit_card_info'

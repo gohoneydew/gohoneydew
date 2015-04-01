@@ -177,6 +177,8 @@ h4 {
     -o-background-size: cover;
     background-size: cover;
 }
+
+
 #map {
     background: url(mapbg.jpg) no-repeat center top;
     padding-top: 60px;

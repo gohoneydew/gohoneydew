@@ -1,0 +1,46 @@
+<style>
+    .navbar{
+        display:none;
+    }
+</style>
+<div class="signinbackground">
+  <div id="page-content-wrapper">
+    <%= link_to root_path do %>
+        <%= image_tag 'honeydewsimple.png', :class => "landinglogosignin animate fadeInDownBig" %>
+    <% end %>
+    <div class="container-fluid">
+      <div class="col-md-4 col-md-offset-4 m-t-50">
+        <div class="welcome animated fadeInDownBig text-center">
+          <h1>Thanks for opting to try<strong> HONEY DEW</strong> beta</h1>
+          <h5>v. b1.0</h5>
+              <section class = "new-acc">
+                <div class = "m-t-20">
+                  <p>You will get an email when you are able to finally use Honey Dew.</p>
+                </div>
+              </section>
+          <div class = "social_sign_in">
+            <hr></hr>
+            <h3>Are you excited? <strong>Share with others</strong></h3>
+            <a href="http://www.facebook.com" title="Sign In With Facebook" rel="tooltip">
+              <i class="fa fa-facebook text-white-opaque borderadius btn-facebook-signin"></i>
+            </a>
+            <a href="http://www.twitter.com" title="Sign In With Facebook" rel="tooltip">
+              <i class="fa fa-twitter text-white-opaque borderadius btn-twitter-signin"></i>
+            </a>
+            <a href="http://www.linkedin.com" title="Sign In With Facebook" rel="tooltip">
+              <i class="fa fa-linkedin text-white-opaque borderadius btn-linkedin-signin"></i>
+            </a>
+          </div>
+          <hr></hr>
+          <h2>Coming Summer 2015</h2>
+              </div>
+              </div>
+          <div class = "footer-signin">
+            <ul>
+              <li><%=link_to "Home", root_path %></li>
+              <li><%= link_to "Sign in", new_session_path(resource_name) %></li>
+              <li><a href="mailto:gohoneydewbeta@google.com" >Contact</a></li>
+            </ul>
+          </div>
+          </div>
+  </div>

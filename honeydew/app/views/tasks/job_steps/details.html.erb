@@ -56,11 +56,14 @@
                 </div>
                 <div class="row m-t-50">
                   <div class = "col-xs-12">
+                    <ol type = "2" class = "paper">
                     <%= f.fields_for :todoitems do |builder| %>
                         <%= render 'todoitem_fields', :f => builder %>
                     <% end %>
+                      <p><%= f.link_to_add "Add a To Do Item", :todoitems %></p>
+                    </ol>
                   </div>
-                  <p><%= f.link_to_add "Add a To Do Item", :todoitems %></p>
+
                 </div>
                 <div class="row m-t-20">
                   <div class = "col-xs-8 col-xs-offset-2">
@@ -99,33 +102,20 @@ Step &nbsp;
         </div>
             <div class="panel-body panel-bg-opaque">
 
-              Voluptates magni error excepturi at. magnam hic molestiae in ratione sit sed dolor velit. eius ipsum quia numquam totam voluptas
+              Average price for: Technology - Entertainment center, TV, Network. $45-$95
 
             </div>
         </div>
         <div class="panel panel-primary">  <div class="panel-heading panel-handle panel-colorize">
           <div class="panel-title">
       <span class="panel-title-edtitable editable editable-click text-center">
-        Average Price
+        Average User Base
       </span>
           </div>
         </div>
           <div class="panel-body panel-bg-opaque">
 
-            Voluptates magni error excepturi at. magnam hic molestiae in ratione sit sed dolor velit. eius ipsum quia numquam totam voluptas
-
-          </div>
-        </div>
-        <div class="panel panel-success-dk">  <div class="panel-heading panel-handle panel-colorize">
-          <div class="panel-title">
-      <span class="panel-title-edtitable editable editable-click text-center">
-        Average Price
-      </span>
-          </div>
-        </div>
-          <div class="panel-body panel-bg-opaque">
-
-            Voluptates magni error excepturi at. magnam hic molestiae in ratione sit sed dolor velit. eius ipsum quia numquam totam voluptas
+           Average number of users this job will reach: 575 people.
 
           </div>
         </div>

@@ -3,7 +3,7 @@
     <ul class="cbp-ig-grid">
       <li>
         <%= link_to tasks_path do %>
-            <span class="cbp-ig-icon fa-car"></span>
+            <span class="cbp-ig-icon fa-dashboard"></span>
             <h3 class="cbp-ig-title">All Jobs</h3>
             <span class="cbp-ig-category">view all jobs in your area</span>
         <% end %>
@@ -11,7 +11,7 @@
     <% @job_categories.alphabetized.each do |job_category| %>
           <li>
             <%= link_to job_category do %>
-                <span class="cbp-ig-icon fa-car"></span>
+                <span class="cbp-ig-icon fa <%=icon(job_category.name)%>"></span>
                 <h3 class="cbp-ig-title"><%= job_category.name %></h3>
                 <span class="cbp-ig-category">view all <%= job_category.name %> jobs in your area</span>
             <% end %>

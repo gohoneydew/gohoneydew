@@ -1,5 +1,7 @@
-<div>
-  <%= f.label :body %>
-  <%= f.text_field :body %>
-  <%= f.link_to_remove "Remove this Item" %>
-</div>
+
+      <li>
+        <div class="input-group">
+          <%= f.link_to_remove "x", :class => "input-group-addon btn btn-danger" %>
+          <%= f.text_field :body, :class => "form-control" %>
+        </div>
+      </li>
