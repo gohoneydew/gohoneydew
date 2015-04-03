@@ -99,11 +99,11 @@ Rails.application.configure do
   ActionMailer::Base.smtp_settings =
       {
 
-          :address            => 'smtp.gmail.com',
+          :address            => 'mail.myhoneydewapp.com',
           :port               => 587,
-          :domain             => 'gmail.com', #you can also use google.com
+          :domain             => 'myhoneydewapp.com', #you can also use google.com
           :authentication     => :plain,
-          :user_name          => 'gohoneydewbeta@gmail.com',
+          :user_name          => 'adam@myhoneydewapp.com',
           :password           => 'fucel-8L'
       }
 end
