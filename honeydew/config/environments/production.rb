@@ -101,7 +101,7 @@ Rails.application.configure do
           :enable_starttls_auto => true,
           :address            => 'box888.bluehost.com',
           :port               => 465,
-          :domain             => 'myhoneydewapp.com', #you can also use google.com
+          :domain             => 'bluehost.com', #you can also use google.com
           :authentication     => :login,
           :user_name          => 'adam@myhoneydewapp.com',
           :password           => 'fucel-8L'
