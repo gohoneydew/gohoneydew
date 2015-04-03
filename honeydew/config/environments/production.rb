@@ -99,10 +99,10 @@ Rails.application.configure do
   ActionMailer::Base.smtp_settings =
       {
 
-          :address            => 'mail.myhoneydewapp.com',
-          :port               => 587,
+          :address            => 'box888.bluehost.com',
+          :port               => 465,
           :domain             => 'myhoneydewapp.com', #you can also use google.com
-          :authentication     => :plain,
+          :authentication     => :ssl,
           :user_name          => 'adam@myhoneydewapp.com',
           :password           => 'fucel-8L'
       }
