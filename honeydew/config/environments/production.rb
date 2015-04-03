@@ -98,11 +98,11 @@ Rails.application.configure do
   ActionMailer::Base.raise_delivery_errors = true
   ActionMailer::Base.smtp_settings =
       {
-
+          :enable_starttls_auto => true,
           :address            => 'box888.bluehost.com',
           :port               => 465,
           :domain             => 'myhoneydewapp.com', #you can also use google.com
-          :authentication     => :ssl,
+          :authentication     => :login,
           :user_name          => 'adam@myhoneydewapp.com',
           :password           => 'fucel-8L'
       }
