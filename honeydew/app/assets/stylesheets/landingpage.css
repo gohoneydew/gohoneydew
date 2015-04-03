@@ -369,7 +369,7 @@ h4 {
     100% { opacity: 0; }
 }
 @media screen and (max-width: 768px){
-    .rw-sentence { font-size: 18px; }
+    .rw-sentence { font-size: 18px;float:left; }
     .rw-wrapper{
         width:80%;
         position: relative;
