@@ -370,8 +370,14 @@ h4 {
 }
 @media screen and (max-width: 768px){
     .rw-sentence { font-size: 18px; }
+    .rw-wrapper{
+        width:80%;
+        position: relative;
+        padding-bottom:60px;
+    }
 }
 @media screen and (max-width: 320px){
+
     .rw-sentence { font-size: 9px; }
     .rw-words-1 { text-transform: none; }
 }

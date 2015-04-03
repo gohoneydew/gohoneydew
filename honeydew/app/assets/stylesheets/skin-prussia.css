@@ -1306,9 +1306,9 @@ ul.timeline li > .date {
     position: relative;
     outline: none;
     background: white;
-    background: -webkit-linear-gradient(top, #dfe8ec 0%, #ffffff 8%) 0 0px;
-    background: -moz-linear-gradient(top, #dfe8ec 0%, #ffffff 8%) 0 0px;
-    background: linear-gradient(center top, #dfe8ec 0%, #ffffff 8%) 0 0px;
+    background: -webkit-linear-gradient(top, #dfe8ec 0%, #ffffff 8%) 0 0;
+    background: -moz-linear-gradient(top, #dfe8ec 0%, #ffffff 8%) 0 0;
+    background: linear-gradient(top, #dfe8ec 0%, #ffffff 8%) 0 0;
     -webkit-background-size: 100% 30px;
     -moz-background-size: 100% 30px;
     -ms-background-size: 100% 30px;
